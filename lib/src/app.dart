@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:torganic/src/utils/device/device_utility.dart';
+import 'package:url_launcher/url_launcher.dart';
 import './utils/theme/theme.dart';
 import './utils/constants/text_strings.dart';
 
@@ -16,14 +18,16 @@ class MyApp extends StatelessWidget {
       darkTheme: MyAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
       // initialBinding: GeneralBindings(),
-      home: const Scaffold(
+      home:  Scaffold(
         body: Center(
-          child: Text(
-            'Project Structure is set up and running.',
-            textAlign: TextAlign.center,
-          ),
+          child: ElevatedButton(
+            onPressed: (){},
+            child: Text('tap this'),
+          )
         ),
       ),
     );
   }
 }
+
+
