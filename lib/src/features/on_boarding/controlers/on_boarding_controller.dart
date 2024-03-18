@@ -30,12 +30,12 @@ class OnBoardingController extends GetxController{
     if(currentPageIndex.value == 2){
       Get.offAll(const LogIn());
     }else{
-      int page = currentPageIndex.value + 1;
+      int page = currentPageIndex.value +1;
       pageController.jumpToPage(page);
     }
   }
 
-  /// Update Current Index & Jump To The Last Page
+  /// Skip on-boarding pages
   void skipPage(){
     Get.offAll(const LogIn());
   }
