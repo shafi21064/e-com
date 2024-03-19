@@ -1,8 +1,7 @@
-import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:torganic/src/features/authentication/views/log_in.dart';
+import 'package:torganic/src/features/authentication/views/log_in/log_in.dart';
 
 class OnBoardingController extends GetxController{
   static OnBoardingController get instance => Get.find();

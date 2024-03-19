@@ -17,12 +17,14 @@ dependencies:
 
   #Utility Packages
   http: ^1.2.1
-  intl: ^0.19.0
+  intl: any
   logger: ^2.1.0
   url_launcher: ^6.2.5
   connectivity_plus: ^5.0.2
   flutter_native_splash: ^2.4.0
   smooth_page_indicator: ^1.1.0
+  fluttertoast: ^8.2.4
+  google_fonts: ^6.2.1
   gap: ^3.0.1
 
   # Icons
@@ -32,6 +34,10 @@ dependencies:
   #State Management
   get: ^4.6.6
   get_storage: ^2.1.1
+
+  # Localization
+  flutter_localizations:
+    sdk: flutter
 
 
 
@@ -45,7 +51,7 @@ dev_dependencies:
 
 flutter:
 
-
+  generate: true
   uses-material-design: true
 
   # Local Assets

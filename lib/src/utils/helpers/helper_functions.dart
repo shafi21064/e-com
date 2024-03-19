@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -39,9 +40,33 @@ class AppHelperFunctions {
     }
   }
 
+  static void showToast(String message){
+    Fluttertoast.showToast(
+        msg: message,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
+  }
+
   static void showSnackBar(String message) {
+    ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
+      content: Text(message),
+    ));
+  }
+
+  static void showSnackBarWithAction(
+      {required String message,
+      required String label,
+      required dynamic onPressed}) {
     ScaffoldMessenger.of(Get.context!).showSnackBar(
-      SnackBar(content: Text(message)),
+      SnackBar(
+        content: Text(message),
+        action: SnackBarAction(label: label, onPressed: onPressed),
+      ),
     );
   }
 
@@ -94,7 +119,8 @@ class AppHelperFunctions {
     return MediaQuery.of(Get.context!).size.width;
   }
 
-  static String getFormattedDate(DateTime date, {String format = 'dd MMM yyyy'}) {
+  static String getFormattedDate(DateTime date,
+      {String format = 'dd MMM yyyy'}) {
     return DateFormat(format).format(date);
   }
 
@@ -105,7 +131,8 @@ class AppHelperFunctions {
   static List<Widget> wrapWidgets(List<Widget> widgets, int rowSize) {
     final wrappedList = <Widget>[];
     for (var i = 0; i < widgets.length; i += rowSize) {
-      final rowChildren = widgets.sublist(i, i + rowSize > widgets.length ? widgets.length : i + rowSize);
+      final rowChildren = widgets.sublist(
+          i, i + rowSize > widgets.length ? widgets.length : i + rowSize);
       wrappedList.add(Row(children: rowChildren));
     }
     return wrappedList;
