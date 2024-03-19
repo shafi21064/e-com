@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-import 'package:torganic/src/features/authentication/views/log_in/home.dart';
+import 'package:torganic/src/features/home/views/home.dart';
 import 'package:torganic/src/features/authentication/views/log_in/log_in.dart';
+import 'package:torganic/src/utils/constants/colors.dart';
+import 'package:torganic/src/utils/helpers/helper_functions.dart';
 
 
 PersistentTabController _controller = PersistentTabController(initialIndex: 0);
@@ -12,20 +14,21 @@ class BottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = AppHelperFunctions.isDarkMode(context);
     return PersistentTabView(
       context,
       controller: _controller,
       screens: _buildScreens(),
       items: _navBarsItems(),
       confineInSafeArea: true,
-      backgroundColor: Colors.white, // Default is Colors.white.
+      backgroundColor: isDark? AppColors.dark : AppColors.light, // Default is Colors.white.
       handleAndroidBackButtonPress: true, // Default is true.
       resizeToAvoidBottomInset: true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
       stateManagement: true, // Default is true.
       hideNavigationBarWhenKeyboardShows: true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
       decoration: NavBarDecoration(
         borderRadius: BorderRadius.circular(10.0),
-        colorBehindNavBar: Colors.white,
+        colorBehindNavBar: isDark? AppColors.dark : AppColors.light,
       ),
       popAllScreensOnTapOfSelectedTab: true,
       popActionScreens: PopActionScreensType.all,
@@ -46,7 +49,7 @@ class BottomNavigation extends StatelessWidget {
 List<Widget> _buildScreens() {
   return [
     const Home(),
-    const LogIn()
+    const LogIn(),
   ];
 }
 

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:torganic/src/common/styles/spacing_style.dart';
+import 'package:torganic/src/common/widgets/app_buttons.dart';
+import 'package:torganic/src/features/home/views/home.dart';
 import 'package:torganic/src/utils/constants/colors.dart';
 import 'package:torganic/src/utils/constants/image_strings.dart';
 import 'package:torganic/src/utils/constants/sizes.dart';
@@ -9,6 +13,8 @@ import 'package:torganic/src/utils/device/device_utility.dart';
 import 'package:torganic/src/utils/helpers/helper_functions.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../widgets/auth_input_field.dart';
+
 class LogIn extends StatelessWidget {
   const LogIn({super.key});
 
@@ -16,34 +22,25 @@ class LogIn extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = AppHelperFunctions.isDarkMode(context);
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.primary,
-        actions: const [
-          Icon(
-            Icons.local_airport_sharp,
-            color: Colors.white,
-          ),
-          Gap(10)
-        ],
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: ElevatedButton(
-                onPressed: () {
-                  AppHelperFunctions.showToast('This is Toast');
-                },
-                style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.all(AppSizes.defaultSpace),
-                  minimumSize:
-                      const Size(AppSizes.buttonWidth, AppSizes.buttonHeight),
-                ),
-                child: Text(AppLocalizations.of(context)!.hi)),
-          )
-        ],
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: AppSizes.defaultSpace),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AuthInputField(isDark: isDark, hingText: 'Enter your email',),
+            Gap(AppHelperFunctions.screenHeight() * .01),
+            AuthInputField(isDark: isDark, hingText: 'Enter your Password',),
+            Gap(AppHelperFunctions.screenHeight() * .02),
+            AppButtons.largeFlatButton(
+                onPressed: (){}, 
+                buttonColor: AppColors.primary, 
+                buttonText: 'Login')
+          ],
+        ),
       ),
     );
   }
 }
+
+
