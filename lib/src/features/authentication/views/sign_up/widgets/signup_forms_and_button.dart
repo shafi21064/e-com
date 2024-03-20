@@ -2,24 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:torganic/src/features/authentication/views/sign_up/signup.dart';
-import '../widgets/remember_and_forgot_button.dart';
+import 'package:torganic/src/features/authentication/views/log_in/login.dart';
 import '../../widgets/auth_input_field.dart';
 import '../../../../bottom_navigation/bottom_navigation.dart';
 import '../../../../../common/widgets/app_buttons.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
 import '../../../../../utils/constants/sizes.dart';
 
-class LogInFormsAndButton extends StatefulWidget {
-  const LogInFormsAndButton({super.key});
+class SignUpFormsAndButton extends StatefulWidget {
+  const SignUpFormsAndButton({super.key});
 
   @override
-  State<LogInFormsAndButton> createState() => _LogInFormsAndButtonState();
+  State<SignUpFormsAndButton> createState() => _SignUpFormsAndButtonState();
 }
 
-class _LogInFormsAndButtonState extends State<LogInFormsAndButton> {
+class _SignUpFormsAndButtonState extends State<SignUpFormsAndButton> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
 
   bool obscured = true;
 
@@ -57,19 +57,33 @@ class _LogInFormsAndButtonState extends State<LogInFormsAndButton> {
           ),
           obscured: obscured,
         ),
-        const RememberAndForgotButton(),
+        const Gap(AppSizes.spaceBtwInputFields),
+        AuthInputField(
+          isDark: isDark,
+          controller: _passwordController,
+          hingText: AppLocalizations.of(context)!.passwordHintText,
+          suffixIcon: InkWell(
+            onTap: () {
+              onSuffixTap();
+            },
+            child: Icon(obscured
+                ? Icons.remove_red_eye
+                : Icons.remove_red_eye_outlined),
+          ),
+          obscured: obscured,
+        ),
         const Gap(AppSizes.spaceBtwSections),
         AppButtons.largeFlatFilledButton(
             onPressed: () {
               Get.offAll(const BottomNavigation());
             },
-            buttonText: AppLocalizations.of(context)!.login),
+            buttonText: AppLocalizations.of(context)!.signUp),
         const Gap(AppSizes.spaceBtwItems),
         AppButtons.largeFlatOutlineButton(
             onPressed: () {
-              Get.to(const SignUp());
+              Get.offAll(const LogIn());
             },
-            buttonText: AppLocalizations.of(context)!.createAccount)
+            buttonText: AppLocalizations.of(context)!.login)
       ],
     );
   }

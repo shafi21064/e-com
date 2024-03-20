@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:get/get.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:torganic/src/features/authentication/views/forgot/forgot.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
 
@@ -19,7 +23,7 @@ class RememberAndForgotButton extends StatelessWidget {
               onChanged: (value) {},
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
-            Text('Remember me',
+            Text(AppLocalizations.of(context)!.rememberMe,
                 style: Theme.of(context)
                     .textTheme
                     .bodySmall!
@@ -29,9 +33,9 @@ class RememberAndForgotButton extends StatelessWidget {
       ),
       TextButton(
         onPressed: () {
-          // Navigator.pushNamed(context, AppRoute.restPassScreen);
+          Get.to(const ForgotPassword());
         },
-        child: Text('Forgot Password',
+        child: Text(AppLocalizations.of(context)!.forgotPassword,
             style: Theme.of(context).textTheme.bodySmall),
       )
     ]);

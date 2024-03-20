@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../../../../common/widgets/app_buttons.dart';
-import '../../../../../utils/constants/colors.dart';
-import '../../../../../utils/constants/sizes.dart';
-import '../../../../../utils/constants/image_strings.dart';
-import '../../../../../utils/helpers/helper_functions.dart';
+import '../../../../common/widgets/app_buttons.dart';
+import '../../../../utils/constants/colors.dart';
+import '../../../../utils/constants/sizes.dart';
+import '../../../../utils/constants/image_strings.dart';
+import '../../../../utils/helpers/helper_functions.dart';
 
+class OtherLogInOrSignUpOption extends StatelessWidget {
+  final dynamic title;
 
-class OtherLogInOption extends StatelessWidget {
-  const OtherLogInOption({super.key});
+  const OtherLogInOrSignUpOption({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class OtherLogInOption extends StatelessWidget {
               endIndent: 5,
             )),
             Text(
-              AppLocalizations.of(context)!.orLogInWith,
+              title,
               style: Theme.of(context).textTheme.labelMedium,
             ),
             Flexible(
@@ -45,12 +46,10 @@ class OtherLogInOption extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AppButtons.smallIconButton(
-                onIconPress: (){},
-                iconPath: AppImages.google),
+                onIconPress: () {}, iconPath: AppImages.google),
             const Gap(AppSizes.spaceBtwItems),
             AppButtons.smallIconButton(
-                onIconPress: (){},
-                iconPath: AppImages.facebook)
+                onIconPress: () {}, iconPath: AppImages.facebook)
           ],
         )
       ],

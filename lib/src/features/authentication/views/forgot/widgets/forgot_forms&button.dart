@@ -3,23 +3,21 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:torganic/src/features/authentication/views/sign_up/signup.dart';
-import '../widgets/remember_and_forgot_button.dart';
 import '../../widgets/auth_input_field.dart';
 import '../../../../bottom_navigation/bottom_navigation.dart';
 import '../../../../../common/widgets/app_buttons.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
 import '../../../../../utils/constants/sizes.dart';
 
-class LogInFormsAndButton extends StatefulWidget {
-  const LogInFormsAndButton({super.key});
+class ForgotFormsAndButton extends StatefulWidget {
+  const ForgotFormsAndButton({super.key});
 
   @override
-  State<LogInFormsAndButton> createState() => _LogInFormsAndButtonState();
+  State<ForgotFormsAndButton> createState() => _ForgotFormsAndButtonState();
 }
 
-class _LogInFormsAndButtonState extends State<LogInFormsAndButton> {
+class _ForgotFormsAndButtonState extends State<ForgotFormsAndButton> {
   final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
 
   bool obscured = true;
 
@@ -42,34 +40,13 @@ class _LogInFormsAndButtonState extends State<LogInFormsAndButton> {
           hingText: AppLocalizations.of(context)!.emailHintText,
           obscured: false,
         ),
-        const Gap(AppSizes.spaceBtwInputFields),
-        AuthInputField(
-          isDark: isDark,
-          controller: _passwordController,
-          hingText: AppLocalizations.of(context)!.passwordHintText,
-          suffixIcon: InkWell(
-            onTap: () {
-              onSuffixTap();
-            },
-            child: Icon(obscured
-                ? Icons.remove_red_eye
-                : Icons.remove_red_eye_outlined),
-          ),
-          obscured: obscured,
-        ),
-        const RememberAndForgotButton(),
+
         const Gap(AppSizes.spaceBtwSections),
         AppButtons.largeFlatFilledButton(
             onPressed: () {
               Get.offAll(const BottomNavigation());
             },
-            buttonText: AppLocalizations.of(context)!.login),
-        const Gap(AppSizes.spaceBtwItems),
-        AppButtons.largeFlatOutlineButton(
-            onPressed: () {
-              Get.to(const SignUp());
-            },
-            buttonText: AppLocalizations.of(context)!.createAccount)
+            buttonText: AppLocalizations.of(context)!.sendOtp),
       ],
     );
   }
