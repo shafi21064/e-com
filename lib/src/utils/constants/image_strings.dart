@@ -9,8 +9,8 @@ class AppImages {
   static const String lightAppLogo = "assets/images/logos/app_logo.png";
 
   // -- Social Logos
-  static const String google = "assets/logos/google-icon.png";
-  static const String facebook = "assets/logos/facebook-icon.png";
+  static const String google = "assets/images/logos/google-icon.png";
+  static const String facebook = "assets/images/logos/facebook-icon.png";
 
   // -- Category Icons
   static const String sportIcon = "assets/icons/categories/icons8-bowling-64.png";

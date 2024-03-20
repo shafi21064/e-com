@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:torganic/src/features/home/views/home.dart';
-import 'package:torganic/src/features/authentication/views/log_in/log_in.dart';
+import 'package:torganic/src/features/authentication/views/log_in/widgets/login_forms&button.dart';
 
 
 PersistentTabController _controller = PersistentTabController(initialIndex: 0);
@@ -22,7 +22,7 @@ class BottomNavigationTwo extends StatelessWidget {
             ),
           ),
           PersistentTabConfig(
-            screen: LogIn(),
+            screen: LogInFormsAndButton(),
             item: ItemConfig(
               icon: Icon(Icons.message),
               title: "Messages",

@@ -1,7 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:torganic/src/features/authentication/views/log_in/log_in.dart';
+import 'package:torganic/src/features/authentication/views/log_in/login.dart';
+import 'package:torganic/src/features/authentication/views/log_in/widgets/login_forms&button.dart';
 import 'package:torganic/src/features/bottom_navigation/bottom_navigation.dart';
 import 'package:torganic/src/features/bottom_navigation/bottom_navigation_two.dart';
 
@@ -29,7 +30,7 @@ class OnBoardingController extends GetxController{
   /// Update Current Index & Jump To Next Page
   void nextPage(){
     if(currentPageIndex.value == 2){
-      Get.offAll(const BottomNavigation());
+      Get.offAll(const LogIn());
     }else{
       int page = currentPageIndex.value +1;
       pageController.jumpToPage(page);
@@ -38,6 +39,6 @@ class OnBoardingController extends GetxController{
 
   /// Skip on-boarding pages
   void skipPage(){
-    Get.offAll(const BottomNavigation());
+    Get.offAll(const LogIn());
   }
 }

@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:torganic/src/features/cart/view/cart.dart';
 import 'package:torganic/src/features/home/views/home.dart';
-import 'package:torganic/src/features/authentication/views/log_in/log_in.dart';
 import 'package:torganic/src/utils/constants/colors.dart';
 import 'package:torganic/src/utils/helpers/helper_functions.dart';
 
@@ -49,7 +48,7 @@ class BottomNavigation extends StatelessWidget {
 List<Widget> _buildScreens() {
   return [
     const Home(),
-    const LogIn(),
+    const Cart(),
   ];
 }
 
@@ -62,8 +61,8 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
       inactiveColorPrimary: CupertinoColors.systemGrey,
     ),
     PersistentBottomNavBarItem(
-      icon: const Icon(CupertinoIcons.settings),
-      title: ("Settings"),
+      icon: const Icon(CupertinoIcons.bag),
+      title: ("Cart"),
       activeColorPrimary: CupertinoColors.activeBlue,
       inactiveColorPrimary: CupertinoColors.systemGrey,
     ),

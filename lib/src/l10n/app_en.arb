@@ -1,4 +1,14 @@
 {
   "helloWorld" : "Hello World",
-  "hi" : "Hi"
+  "hi" : "Hi",
+  "emailHintText" : "Enter your email",
+  "passwordHintText" : "Enter your Password",
+  "createAccount" : "Create Account",
+  "orLogInWith" : "or log in with",
+  "login" : "Login",
+  "skip" : "Skip",
+  "submit" : "Submit",
+  "done" : "Done",
+  "and" : "and"
+
 }
