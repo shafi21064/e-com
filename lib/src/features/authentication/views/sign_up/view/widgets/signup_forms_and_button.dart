@@ -1,16 +1,15 @@
-import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:torganic/src/features/authentication/views/log_in/login.dart';
+import 'package:torganic/src/features/authentication/views/log_in/view/login.dart';
 import 'package:torganic/src/features/authentication/views/sign_up/controllers/signup_controller.dart';
-import '../../../../../utils/validators/validation.dart';
-import '../../widgets/auth_input_field.dart';
-import '../../../../bottom_navigation/bottom_navigation.dart';
-import '../../../../../common/widgets/buttons/app_buttons.dart';
-import '../../../../../utils/helpers/helper_functions.dart';
-import '../../../../../utils/constants/sizes.dart';
+import '../../../../../../common/widgets/buttons/app_buttons.dart';
+import '../../../../../../utils/constants/sizes.dart';
+import '../../../../../../utils/helpers/helper_functions.dart';
+import '../../../../../../utils/validators/validation.dart';
+import '../../../widgets/auth_input_field.dart';
+
 
 class SignUpFormsAndButton extends StatelessWidget {
   const SignUpFormsAndButton({super.key});

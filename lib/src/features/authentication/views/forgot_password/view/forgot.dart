@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import './widgets/forgot_forms&button.dart';
-import '../../../../common/styles/spacing_style.dart';
-import '../../../../utils/constants/image_strings.dart';
-import '../../../../utils/constants/sizes.dart';
+import '../../../../../common/styles/spacing_style.dart';
+import '../../../../../utils/constants/image_strings.dart';
+import '../../../../../utils/constants/sizes.dart';
+import 'widgets/forgot_forms&button.dart';
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({super.key});

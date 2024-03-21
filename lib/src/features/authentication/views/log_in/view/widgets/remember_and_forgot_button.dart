@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
-import '../../forgot_password/forgot.dart';
-import '../../../../../utils/constants/colors.dart';
-import '../../../../../utils/helpers/helper_functions.dart';
+import '../../../../../../utils/constants/colors.dart';
+import '../../../../../../utils/helpers/helper_functions.dart';
+import '../../../forgot_password/view/forgot.dart';
+
 
 class RememberAndForgotButton extends StatelessWidget {
   const RememberAndForgotButton({

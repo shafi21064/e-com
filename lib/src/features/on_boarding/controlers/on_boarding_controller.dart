@@ -1,10 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:torganic/src/features/authentication/views/log_in/login.dart';
-import 'package:torganic/src/features/authentication/views/log_in/widgets/login_forms&button.dart';
-import 'package:torganic/src/features/bottom_navigation/bottom_navigation.dart';
-import 'package:torganic/src/features/bottom_navigation/bottom_navigation_two.dart';
+import 'package:torganic/src/features/authentication/views/log_in/view/login.dart';
+
 
 class OnBoardingController extends GetxController{
   static OnBoardingController get instance => Get.find();

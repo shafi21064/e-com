@@ -20,6 +20,7 @@
   "skip" : "Skip",
   "submit" : "Submit",
   "done" : "Done",
-  "and" : "and"
+  "and" : "and",
+  "search" : "Search.."
 
 }

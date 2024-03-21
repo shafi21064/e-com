@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import '../../../../common/styles/spacing_style.dart';
-import '../../../../utils/constants/image_strings.dart';
-import '../../../../utils/constants/sizes.dart';
-import 'widgets/otp_forms_and_button.dart';
+import '../../../../../common/styles/spacing_style.dart';
+import '../../../../../utils/constants/image_strings.dart';
+import '../../../../../utils/constants/sizes.dart';
+import 'widgets/new_password_forms&button.dart';
 
-class Otp extends StatelessWidget {
-  const Otp({super.key});
+class NewPassword extends StatelessWidget {
+  const NewPassword({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +23,11 @@ class Otp extends StatelessWidget {
             ),
             const Gap(AppSizes.spaceBtwSections),
             Text(
-              AppLocalizations.of(context)!.verifyYourself,
+              AppLocalizations.of(context)!.newPassword,
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const Gap(AppSizes.spaceBtwSections),
-            const OtpFormsAndButton()
+            const NewPasswordFormsAndButton()
           ],
         ),
       ),
