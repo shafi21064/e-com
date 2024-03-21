@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:get/get.dart';
+import 'package:torganic/src/features/authentication/views/sign_up/controllers/signup_controller.dart';
 import '../../widgets/other_login_option.dart';
 import '../../../../../common/styles/spacing_style.dart';
 import '../../../../../utils/constants/image_strings.dart';
@@ -14,6 +16,7 @@ class SignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final signUpController = Get.put(SignUpPageController());
 
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
