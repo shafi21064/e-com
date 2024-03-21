@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:torganic/src/common/widgets/app_buttons.dart';
+import 'package:torganic/src/common/widgets/buttons/app_buttons.dart';
 import 'package:torganic/src/features/on_boarding/controlers/on_boarding_controller.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';

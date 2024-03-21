@@ -8,7 +8,7 @@ import 'package:torganic/src/features/authentication/views/sign_up/controllers/s
 import '../../../../../utils/validators/validation.dart';
 import '../../widgets/auth_input_field.dart';
 import '../../../../bottom_navigation/bottom_navigation.dart';
-import '../../../../../common/widgets/app_buttons.dart';
+import '../../../../../common/widgets/buttons/app_buttons.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
 import '../../../../../utils/constants/sizes.dart';
 
