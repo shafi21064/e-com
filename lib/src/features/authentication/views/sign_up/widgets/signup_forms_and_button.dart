@@ -1,36 +1,24 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:torganic/src/features/authentication/views/log_in/login.dart';
+import 'package:torganic/src/features/authentication/views/sign_up/controllers/signup_controller.dart';
+import '../../../../../utils/validators/validation.dart';
 import '../../widgets/auth_input_field.dart';
 import '../../../../bottom_navigation/bottom_navigation.dart';
 import '../../../../../common/widgets/app_buttons.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
 import '../../../../../utils/constants/sizes.dart';
 
-class SignUpFormsAndButton extends StatefulWidget {
+class SignUpFormsAndButton extends StatelessWidget {
   const SignUpFormsAndButton({super.key});
 
-  @override
-  State<SignUpFormsAndButton> createState() => _SignUpFormsAndButtonState();
-}
-
-class _SignUpFormsAndButtonState extends State<SignUpFormsAndButton> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController = TextEditingController();
-
-  bool obscured = true;
-
-  onSuffixTap() {
-    setState(() {
-      obscured = !obscured;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
+    final signUpController = SignUpPageController.instance;
     final isDark = AppHelperFunctions.isDarkMode(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -38,44 +26,49 @@ class _SignUpFormsAndButtonState extends State<SignUpFormsAndButton> {
       children: [
         AuthInputField(
           isDark: isDark,
-          controller: _emailController,
+          controller: signUpController.emailController,
+          validator: (value)=> AppValidator.validateEmail(value),
           hingText: AppLocalizations.of(context)!.emailHintText,
           obscured: false,
         ),
         const Gap(AppSizes.spaceBtwInputFields),
         AuthInputField(
           isDark: isDark,
-          controller: _passwordController,
+          controller: signUpController.passwordController,
+          validator: (value)=> AppValidator.validatePassword(value),
           hingText: AppLocalizations.of(context)!.passwordHintText,
           suffixIcon: InkWell(
             onTap: () {
-              onSuffixTap();
+              signUpController.onSuffixTap();
             },
-            child: Icon(obscured
+            child: Icon(
+                signUpController.obscured.value
                 ? Icons.remove_red_eye
                 : Icons.remove_red_eye_outlined),
           ),
-          obscured: obscured,
+          obscured: signUpController.obscured.value,
         ),
         const Gap(AppSizes.spaceBtwInputFields),
         AuthInputField(
           isDark: isDark,
-          controller: _passwordController,
-          hingText: AppLocalizations.of(context)!.passwordHintText,
+          controller: signUpController.confirmPasswordController,
+          validator: (value)=> AppValidator.validatePassword(value),
+          hingText: AppLocalizations.of(context)!.confirmPasswordHintText,
           suffixIcon: InkWell(
             onTap: () {
-              onSuffixTap();
+              signUpController.onSuffixTap();
             },
-            child: Icon(obscured
+            child: Icon(
+                signUpController.obscured.value
                 ? Icons.remove_red_eye
                 : Icons.remove_red_eye_outlined),
           ),
-          obscured: obscured,
+          obscured: signUpController.obscured.value,
         ),
         const Gap(AppSizes.spaceBtwSections),
         AppButtons.largeFlatFilledButton(
             onPressed: () {
-              Get.offAll(const BottomNavigation());
+
             },
             buttonText: AppLocalizations.of(context)!.signUp),
         const Gap(AppSizes.spaceBtwItems),

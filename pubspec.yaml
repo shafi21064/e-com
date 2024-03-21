@@ -18,8 +18,10 @@ dependencies:
   http: ^1.2.1
   intl: any
   logger: ^2.1.0
+  lottie: ^3.1.0
   url_launcher: ^6.2.5
   connectivity_plus: ^5.0.2
+  another_flushbar: ^1.12.30
   smooth_page_indicator: ^1.1.0
   persistent_bottom_nav_bar: any
   persistent_bottom_nav_bar_v2: any
@@ -57,8 +59,9 @@ flutter:
   # Local Assets
   assets:
     - assets/images/logos/
+    - assets/images/icons/
     - assets/images/on_boarding_images/
-    - assets/icons/
+
 
   # Local Fonts
   # fonts:

@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -48,9 +49,21 @@ class AppHelperFunctions {
         timeInSecForIosWeb: 1,
         backgroundColor: Colors.red,
         textColor: Colors.white,
-        fontSize: 16.0
+        fontSize: 16.0,
     );
   }
+
+  static showFlashBar({String? message, Icon? icon, FlushbarPosition flushbarPosition = FlushbarPosition.BOTTOM }){
+    Flushbar(
+      message: message,
+      backgroundColor: Colors.red,
+      duration: const Duration(seconds: 3),
+      icon: icon,
+      flushbarPosition: flushbarPosition,
+
+    ).show(Get.context!);
+  }
+
 
   static void showSnackBar(String message) {
     ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(

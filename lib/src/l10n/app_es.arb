@@ -1,12 +1,25 @@
 {
-  "helloWorld" : "Hola Mundo",
-  "hi" : "Hola",
+  "helloWorld" : "Hello World",
+  "hi" : "Hi",
   "emailHintText" : "Enter your email",
   "passwordHintText" : "Enter your Password",
+  "newPassword" : "Enter New Password",
+  "newPasswordHintText": "New Password",
+  "confirmPasswordHintText": "Confirm Password",
   "createAccount" : "Create Account",
+  "orLogInWith" : "Or log in with",
+  "orSignUpWith" : "Or sign up with",
+  "rememberMe" : "Remember me",
+  "forgotPassword" : "Forgot Password?",
+  "sendOtp" : "Send Code",
+  "otp" : "Otp",
+  "verifyYourself" : "Verify yourself",
+  "verify" : "Verify",
   "login" : "Login",
+  "signUp" : "Register",
   "skip" : "Skip",
   "submit" : "Submit",
   "done" : "Done",
   "and" : "and"
+
 }

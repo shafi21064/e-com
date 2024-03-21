@@ -2,22 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:torganic/src/features/authentication/views/forgot_password/new_password.dart';
+import 'package:torganic/src/features/authentication/views/forgot_password/otp.dart';
+import 'package:torganic/src/features/authentication/views/log_in/login.dart';
 import 'package:torganic/src/features/authentication/views/sign_up/signup.dart';
+import '../../../../../utils/validators/validation.dart';
 import '../../widgets/auth_input_field.dart';
 import '../../../../bottom_navigation/bottom_navigation.dart';
 import '../../../../../common/widgets/app_buttons.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
 import '../../../../../utils/constants/sizes.dart';
 
-class ForgotFormsAndButton extends StatefulWidget {
-  const ForgotFormsAndButton({super.key});
+class OtpFormsAndButton extends StatefulWidget {
+  const OtpFormsAndButton({super.key});
 
   @override
-  State<ForgotFormsAndButton> createState() => _ForgotFormsAndButtonState();
+  State<OtpFormsAndButton> createState() => _OtpFormsAndButtonState();
 }
 
-class _ForgotFormsAndButtonState extends State<ForgotFormsAndButton> {
-  final TextEditingController _emailController = TextEditingController();
+class _OtpFormsAndButtonState extends State<OtpFormsAndButton> {
+  final TextEditingController _otpController = TextEditingController();
 
   bool obscured = true;
 
@@ -36,17 +40,17 @@ class _ForgotFormsAndButtonState extends State<ForgotFormsAndButton> {
       children: [
         AuthInputField(
           isDark: isDark,
-          controller: _emailController,
-          hingText: AppLocalizations.of(context)!.emailHintText,
+          controller: _otpController,
+          validator: (value) => AppValidator.validateEmail(value),
+          hingText: AppLocalizations.of(context)!.otp,
           obscured: false,
         ),
-
         const Gap(AppSizes.spaceBtwSections),
         AppButtons.largeFlatFilledButton(
             onPressed: () {
-              Get.offAll(const BottomNavigation());
+              Get.to(const NewPassword());
             },
-            buttonText: AppLocalizations.of(context)!.sendOtp),
+            buttonText: AppLocalizations.of(context)!.verify),
       ],
     );
   }

@@ -14,23 +14,27 @@ class SignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-          padding: AppSpacingStyle.paddingWithAppBarHeight,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Image(
-              image: AssetImage(AppImages.darkAppLogo),
-              width: AppSizes.imageThumbSize,
-            ),
-            const Gap(AppSizes.spaceBtwSections),
-            const SignUpFormsAndButton(),
-            const Gap(AppSizes.spaceBtwSections),
-            OtherLogInOrSignUpOption(
-              title: AppLocalizations.of(context)!.orSignUpWith,
-            )
-          ],
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: Padding(
+            padding: AppSpacingStyle.paddingWithAppBarHeight,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Image(
+                image: AssetImage(AppImages.darkAppLogo),
+                width: AppSizes.imageThumbSize,
+              ),
+              const Gap(AppSizes.spaceBtwSections),
+              const SignUpFormsAndButton(),
+              const Gap(AppSizes.spaceBtwSections),
+              OtherLogInOrSignUpOption(
+                title: AppLocalizations.of(context)!.orSignUpWith,
+              )
+            ],
+          ),
         ),
       ),
     );
