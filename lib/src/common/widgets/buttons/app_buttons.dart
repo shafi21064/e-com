@@ -6,7 +6,7 @@ import 'package:torganic/src/utils/constants/colors.dart';
 import 'package:torganic/src/utils/constants/sizes.dart';
 import 'package:torganic/src/utils/helpers/helper_functions.dart';
 
-import '../../utils/constants/image_strings.dart';
+import '../../../utils/constants/image_strings.dart';
 
 class AppButtons {
   static ElevatedButton smallRoundButton(
