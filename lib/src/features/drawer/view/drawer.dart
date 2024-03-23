@@ -1,22 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:get/get.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:torganic/src/features/authentication/views/log_in/view/login.dart';
 import 'package:torganic/src/utils/constants/image_strings.dart';
 
 
-class NavBar extends StatefulWidget {
+class NavBar extends StatelessWidget {
   final String userName, roll;
   const NavBar({required this.userName, required this.roll, super.key});
 
-  @override
-  State<NavBar> createState() => _NavBarState();
-}
-
-class _NavBarState extends State<NavBar> {
-
   void _showDialog() {
     showDialog(
-        context: context,
+        context: Get.overlayContext!,
         builder: (context) {
           return AlertDialog(
             icon: const Icon(Icons.info),
@@ -29,7 +26,7 @@ class _NavBarState extends State<NavBar> {
                 children: [
                   CupertinoButton(
                       onPressed: () async {
-
+                        Get.offAll(const LogIn());
                       },
                       child: const Text(
                         'Yes',
@@ -66,10 +63,10 @@ class _NavBarState extends State<NavBar> {
                               backgroundImage:
                               AssetImage(AppImages.google)),
                           const Gap(5),
-                          Text(widget.userName,
+                          Text(userName,
                               style: Theme.of(context).textTheme.bodyLarge),
                           const Gap(5),
-                          Text(widget.roll)
+                          Text(roll)
                         ],
                       ),
                     )),

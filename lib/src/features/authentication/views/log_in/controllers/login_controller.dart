@@ -1,6 +1,8 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:torganic/src/features/bottom_navigation/bottom_navigation.dart';
+import 'package:torganic/src/features/home/views/home.dart';
 import 'package:torganic/src/utils/constants/image_strings.dart';
 import 'package:torganic/src/utils/helpers/network_manager.dart';
 import 'package:torganic/src/utils/popups/loaders.dart';
@@ -38,6 +40,9 @@ class LogInPageController extends GetxController{
       AppLoaders.errorSnackBar(title: 'oh, Snap', message: e.toString());
     }finally{
       FullScreenLoader.stopLoading();
+      if(logInFormKey.currentState!.validate()){
+        Get.offAll(const BottomNavigation());
+      }
     }
   }
 }
