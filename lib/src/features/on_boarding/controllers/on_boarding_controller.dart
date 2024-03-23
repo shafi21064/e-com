@@ -1,7 +1,10 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:torganic/src/features/authentication/views/log_in/view/login.dart';
+import 'package:torganic/src/utils/local_storage/local_storage_keys.dart';
+import 'package:torganic/src/utils/local_storage/storage_utility.dart';
 
 
 class OnBoardingController extends GetxController{
@@ -11,8 +14,6 @@ class OnBoardingController extends GetxController{
   ///Variables
   final pageController = PageController();
   Rx<int> currentPageIndex = 0.obs;
-
-
 
   /// Update Current Index when Page Scroll
   void updatePageIndicator(index){
@@ -29,6 +30,7 @@ class OnBoardingController extends GetxController{
   void nextPage(){
     if(currentPageIndex.value == 2){
       Get.offAll(const LogIn());
+     AppLocalStorage().saveData(LocalStorageKeys.isFirstTime, false);
     }else{
       int page = currentPageIndex.value +1;
       pageController.jumpToPage(page);
@@ -37,6 +39,6 @@ class OnBoardingController extends GetxController{
 
   /// Skip on-boarding pages
   void skipPage(){
-    Get.offAll(const LogIn());
+    pageController.jumpToPage(2);
   }
 }

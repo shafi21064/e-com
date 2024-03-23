@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:torganic/src/features/on_boarding/controlers/on_boarding_controller.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/device/device_utility.dart';
+import '../../controllers/on_boarding_controller.dart';
+
 
 class OnBoardingSkip extends StatelessWidget {
   const OnBoardingSkip({
@@ -18,7 +20,7 @@ class OnBoardingSkip extends StatelessWidget {
         onPressed: (){
           skipController.skipPage();
         },
-        child: const Text('Skip'),
+        child: Text(AppLocalizations.of(context)!.skip),
       ),
     );
   }
