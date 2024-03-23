@@ -31,6 +31,7 @@ class OnBoardingController extends GetxController{
     if(currentPageIndex.value == 2){
       Get.offAll(const LogIn());
      AppLocalStorage().saveData(LocalStorageKeys.isFirstTime, false);
+     print(AppLocalStorage().readData(LocalStorageKeys.isFirstTime));
     }else{
       int page = currentPageIndex.value +1;
       pageController.jumpToPage(page);

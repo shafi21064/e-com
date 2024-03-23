@@ -20,6 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   changeScreen() {
     var isFirstTime = AppLocalStorage().readData(LocalStorageKeys.isFirstTime);
+    print(isFirstTime);
 
     if (isFirstTime == null ) {
       Future.delayed(const Duration(seconds: 3), () {
