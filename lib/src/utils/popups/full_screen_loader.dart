@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:torganic/src/utils/constants/colors.dart';
@@ -16,10 +14,9 @@ class FullScreenLoader{
               color: AppHelperFunctions.isDarkMode(Get.context!) ? AppColors.dark : AppColors.light,
               width: double.infinity,
               height: double.infinity,
-              child: Column(
+              child: const Column(
                 children: [
                   SizedBox(height: 250,)
-
                 ],
               ),
             )));
