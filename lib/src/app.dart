@@ -5,6 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import './splash_screen.dart';
 import './utils/theme/theme.dart';
 import './utils/constants/text_strings.dart';
+import 'common/bindings/general_bingdings.dart';
 
 
 class MyApp extends StatelessWidget {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: MyAppTheme.lightTheme,
       darkTheme: MyAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
-      // initialBinding: GeneralBindings(),
+        initialBinding: GeneralBindings(),
         locale: const Locale('en'),
         localizationsDelegates: const [
           AppLocalizations.delegate, // Add this line

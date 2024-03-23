@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:get/get.dart';
+import 'package:get/get_instance/get_instance.dart';
+import 'package:torganic/src/features/authentication/views/log_in/controllers/login_controller.dart';
 import '../../widgets/other_login_option.dart';
 import '../../../../../common/styles/spacing_style.dart';
 import '../../../../../utils/constants/image_strings.dart';
@@ -11,9 +14,9 @@ import 'widgets/login_forms&button.dart';
 
 class LogIn extends StatelessWidget {
   const LogIn({super.key});
-
   @override
   Widget build(BuildContext context) {
+    final loinController = Get.lazyPut(() => LogInPageController());
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(

@@ -2,64 +2,73 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:get/get_state_manager/get_state_manager.dart';
 import '../../../../../../common/widgets/buttons/app_buttons.dart';
 import '../../../../../../utils/constants/sizes.dart';
 import '../../../../../../utils/helpers/helper_functions.dart';
 import '../../../../../../utils/validators/validation.dart';
-import '../../../log_in/view/login.dart';
 import '../../../widgets/auth_input_field.dart';
+import '../../controllers/new_password_controller.dart';
 
-
-class NewPasswordFormsAndButton extends StatefulWidget {
+class NewPasswordFormsAndButton extends StatelessWidget {
   const NewPasswordFormsAndButton({super.key});
-
-  @override
-  State<NewPasswordFormsAndButton> createState() => _NewPasswordFormsAndButtonState();
-}
-
-class _NewPasswordFormsAndButtonState extends State<NewPasswordFormsAndButton> {
-  final TextEditingController _newPasswordController = TextEditingController();
-  final TextEditingController _confirmPasswordController = TextEditingController();
-
-  bool obscured = true;
-
-  onSuffixTap() {
-    setState(() {
-      obscured = !obscured;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     final isDark = AppHelperFunctions.isDarkMode(context);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        AuthInputField(
-          isDark: isDark,
-          controller: _newPasswordController,
-        validator: (value)=> AppValidator.validatePassword(value),
-          hingText: AppLocalizations.of(context)!.newPasswordHintText,
-          obscured: false,
-        ),
-        const Gap(AppSizes.spaceBtwInputFields),
-        AuthInputField(
-          isDark: isDark,
-          controller: _confirmPasswordController,
-          validator: (value)=> AppValidator.validatePassword(value),
-          hingText: AppLocalizations.of(context)!.confirmPasswordHintText,
-          obscured: false,
-        ),
-
-        const Gap(AppSizes.spaceBtwSections),
-        AppButtons.largeFlatFilledButton(
-            onPressed: () {
-              Get.to(const LogIn());
-            },
-            buttonText: AppLocalizations.of(context)!.submit),
-      ],
+    final newPasswordController = NewPasswordController.instance;
+    return Form(
+      key: newPasswordController.newPasswordKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Obx(
+            () => AuthInputField(
+              isDark: isDark,
+              controller: newPasswordController.newPassword,
+              validator: (value) => AppValidator.validatePassword(value),
+              hingText: AppLocalizations.of(context)!.newPasswordHintText,
+              obscured: newPasswordController.passwordObscured.value,
+              suffixIcon: InkWell(
+                onTap: () {
+                  newPasswordController.passwordObscured.value =
+                      !newPasswordController.passwordObscured.value;
+                },
+                child: Icon(newPasswordController.passwordObscured.value
+                    ? Icons.remove_red_eye
+                    : Icons.remove_red_eye_outlined),
+              ),
+            ),
+          ),
+          const Gap(AppSizes.spaceBtwInputFields),
+          Obx(
+            () => AuthInputField(
+              isDark: isDark,
+              controller: newPasswordController.newConfirmPassword,
+              validator: (value) => AppValidator.validateConfirmPassword(
+                  value, newPasswordController),
+              hingText: AppLocalizations.of(context)!.confirmPasswordHintText,
+              obscured: newPasswordController.confirmPasswordObscured.value,
+              suffixIcon: InkWell(
+                onTap: () {
+                  newPasswordController.confirmPasswordObscured.value =
+                      !newPasswordController.confirmPasswordObscured.value;
+                },
+                child: Icon(newPasswordController.confirmPasswordObscured.value
+                    ? Icons.remove_red_eye
+                    : Icons.remove_red_eye_outlined),
+              ),
+            ),
+          ),
+          const Gap(AppSizes.spaceBtwSections),
+          AppButtons.largeFlatFilledButton(
+              onPressed: () {
+               newPasswordController.submit();
+              },
+              buttonText: AppLocalizations.of(context)!.submit),
+        ],
+      ),
     );
   }
 }

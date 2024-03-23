@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:get/get.dart';
+import 'package:torganic/src/features/authentication/views/forgot_password/controllers/forgot_password_controllers.dart';
 import '../../../../../common/styles/spacing_style.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
@@ -11,6 +13,7 @@ class ForgotPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final forgotController = Get.lazyPut(() => ForgotPasswordController());
     return Scaffold(
       body: Padding(
         padding: AppSpacingStyle.paddingWithAppBarHeight,

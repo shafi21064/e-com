@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:get/get.dart';
 import '../../../../../common/styles/spacing_style.dart';
 import '../../../../../utils/constants/image_strings.dart';
 import '../../../../../utils/constants/sizes.dart';
+import '../controllers/otp_controller.dart';
 import 'widgets/otp_forms_and_button.dart';
 
 
@@ -12,6 +14,7 @@ class Otp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final otpController = Get.lazyPut(() => OtpController());
     return Scaffold(
       body: Padding(
         padding: AppSpacingStyle.paddingWithAppBarHeight,

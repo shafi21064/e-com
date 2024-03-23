@@ -7,20 +7,20 @@ import 'package:torganic/src/utils/popups/loaders.dart';
 
 import '../../../../../utils/popups/full_screen_loader.dart';
 
-class SignUpPageController extends GetxController{
-  static SignUpPageController get instance => Get.find();
+class LogInPageController extends GetxController{
+  static LogInPageController get instance => Get.find();
 
   ///Controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
-  GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
+  GlobalKey<FormState> logInFormKey = GlobalKey<FormState>();
 
+  /// variables
   Rx<bool> passwordObscured = true.obs;
-  Rx<bool> confirmPasswordObscured = true.obs;
+  Rx<bool> rememberMe = true.obs;
 
 
-  Future<void> signUp() async{
+  Future<void> logIn() async{
     final isConnected = await NetworkManager.instance.isConnected();
     try{
       /// Start Loading
@@ -30,8 +30,7 @@ class SignUpPageController extends GetxController{
       if(!isConnected) return;
 
       /// Validate Form
-      if(!signupFormKey.currentState!.validate()) return;
-
+      if(!logInFormKey.currentState!.validate()) return;
 
 
     }catch(e){

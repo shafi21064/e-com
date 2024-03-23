@@ -4,6 +4,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
+import '../constants/colors.dart';
+
 class AppHelperFunctions {
   static Color? getColor(String value) {
     /// Define your product specific colors here and it will match the attribute colors and show specific 🟠🟡🟢🔵🟣🟤
@@ -69,6 +71,21 @@ class AppHelperFunctions {
     ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
       content: Text(message),
     ));
+  }
+
+  static void getSnackBar({required title, message = '', duration = 3, backgroundColor, icon}){
+    Get.snackbar(
+        title,
+        message,
+        isDismissible: true,
+        shouldIconPulse: true,
+        colorText: AppColors.white,
+        backgroundColor: backgroundColor,
+        snackPosition: SnackPosition.BOTTOM,
+        duration: Duration(seconds: duration),
+        margin: const EdgeInsets.all(10),
+        icon: Icon(icon, color: AppColors.white,)
+    );
   }
 
   static void showSnackBarWithAction(

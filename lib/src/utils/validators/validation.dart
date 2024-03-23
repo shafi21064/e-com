@@ -43,6 +43,13 @@ class AppValidator {
     return null;
   }
 
+  static String? validateConfirmPassword(String? confirmValue, passwordValue){
+    if(confirmValue != passwordValue){
+      return 'Confirm Password must be match with Password.';
+    }
+    return null;
+  }
+
   static String? validatePhoneNumber(String? value) {
     if (value == null || value.isEmpty) {
       return 'Phone number is required.';
@@ -55,6 +62,13 @@ class AppValidator {
       return 'Invalid phone number format (10 digits required).';
     }
 
+    return null;
+  }
+
+  static String? validateOtp(String? value){
+    if(value == null || value.isEmpty){
+      return 'Otp is required';
+    }
     return null;
   }
 
