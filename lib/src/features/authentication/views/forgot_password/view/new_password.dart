@@ -13,7 +13,7 @@ class NewPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final newPasswordController = Get.lazyPut(() => NewPasswordController());
+    final newPasswordController = Get.put(NewPasswordController());
     return Scaffold(
       body: Padding(
         padding: AppSpacingStyle.paddingWithAppBarHeight,

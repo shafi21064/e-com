@@ -14,7 +14,7 @@ class Otp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final otpController = Get.lazyPut(() => OtpController());
+    final otpController = Get.put(OtpController());
     return Scaffold(
       body: Padding(
         padding: AppSpacingStyle.paddingWithAppBarHeight,

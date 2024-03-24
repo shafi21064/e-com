@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:torganic/src/features/authentication/views/log_in/view/login.dart';
 import 'package:torganic/src/features/on_boarding/views/on_boarding.dart';
 import 'package:torganic/src/utils/constants/colors.dart';
 import 'package:torganic/src/utils/constants/image_strings.dart';
 import 'package:torganic/src/utils/helpers/helper_functions.dart';
-import 'package:torganic/src/utils/local_storage/local_storage_keys.dart';
-import 'package:torganic/src/utils/local_storage/storage_utility.dart';
+
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -22,18 +20,14 @@ class _SplashScreenState extends State<SplashScreen> {
   changeScreen() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     final isNotFirst = sharedPreferences.getBool('isNotFirst');
-    print('value' + isNotFirst.toString());
-    
 
     if (isNotFirst == null ) {
       Future.delayed(const Duration(seconds: 3), () {
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const OnBoarding()));
+        Get.offAll(const OnBoarding());
       });
     } else if (isNotFirst == true) {
       Future.delayed(const Duration(seconds: 3), () {
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const LogIn()));
+        Get.offAll(const LogIn());
       });
     }
 

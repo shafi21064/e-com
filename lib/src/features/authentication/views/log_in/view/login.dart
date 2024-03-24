@@ -11,12 +11,11 @@ import '../../../../../utils/constants/sizes.dart';
 import 'widgets/login_forms&button.dart';
 
 
-
 class LogIn extends StatelessWidget {
   const LogIn({super.key});
   @override
   Widget build(BuildContext context) {
-    final loinController = Get.lazyPut(() => LogInPageController());
+    final logInController = Get.put(LogInPageController());
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(

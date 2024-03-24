@@ -13,7 +13,7 @@ class ForgotPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final forgotController = Get.lazyPut(() => ForgotPasswordController());
+    final forgotController = Get.put(ForgotPasswordController());
     return Scaffold(
       body: Padding(
         padding: AppSpacingStyle.paddingWithAppBarHeight,

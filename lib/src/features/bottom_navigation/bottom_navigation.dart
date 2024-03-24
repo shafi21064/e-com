@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:torganic/src/features/cart/view/cart.dart';
 import 'package:torganic/src/features/home/views/home.dart';
+import 'package:torganic/src/features/home/views/home_two.dart';
 import 'package:torganic/src/utils/constants/colors.dart';
 import 'package:torganic/src/utils/helpers/helper_functions.dart';
 
@@ -47,7 +48,7 @@ class BottomNavigation extends StatelessWidget {
 
 List<Widget> _buildScreens() {
   return [
-    const Home(),
+    const HomeTwo(),
     const Cart(),
   ];
 }

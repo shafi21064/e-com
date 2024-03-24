@@ -1,70 +1,42 @@
-// import 'package:flutter/material.dart';
-// import 'package:torganic/src/features/authentication/views/forgot_password/forgot.dart';
-// import 'package:torganic/src/features/authentication/views/forgot_password/otp.dart';
-// import 'package:torganic/src/utils/constants/colors.dart';
-//
-//
-// class TabBarViewInfo extends StatefulWidget {
-//   final String description, specification;
-//
-//   const TabBarViewInfo({super.key, required this.description, required this.specification});
-//
-//   @override
-//   State<TabBarViewInfo> createState() => _TabBarViewInfoState();
-// }
-//
-// class _TabBarViewInfoState extends State<TabBarViewInfo> with TickerProviderStateMixin {
-//   @override
-//   Widget build(BuildContext context) {
-//     TabController _tabController = TabController(length: 2, vsync: this);
-//     return Container(
-//       height: 500,
-//       child: Column(
-//         children: [
-//           Container(
-//            height: 54,
-//             width: MediaQuery.of(context).size.width,
-//             decoration: BoxDecoration(
-//                 color: Colors.white,
-//                 boxShadow: [
-//                   BoxShadow(
-//                       color: Colors.grey.withOpacity(0.5),
-//                       blurRadius: 5,
-//                       offset: const Offset(0, 5) // changes position of shadow
-//                   ),
-//                 ]
-//             ),
-//             child: TabBar(
-//                 indicator: const BoxDecoration(
-//                     color: AppColors.borderPrimary
-//                 ),
-//                 unselectedLabelColor: const Color(0xff7B7B7B),
-//                 controller: _tabController,
-//                 tabs: const [
-//                   Tab(
-//                     child: Text('Description', ),),
-//                   Tab(
-//                     child: Text('Specification'),
-//                   )
-//                 ]),
-//           ),
-//           SizedBox(
-//             height: 200,
-//             width: MediaQuery.sizeOf(context).width,
-//             // decoration: const BoxDecoration(
-//             //   color: Colors.white,
-//             //
-//             // ),
-//             child: TabBarView(
-//               controller: _tabController,
-//               children: const [
-//                 Text('first Tab'),
-//                 Text('second Tab'),
-//               ],
-//             ),
-//           )
-//         ],
-//       ),
-//     );
-//   }
-// }
+import 'dart:core';
+
+import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import 'package:torganic/src/utils/constants/sizes.dart';
+import 'package:torganic/src/utils/device/device_utility.dart';
+
+class CustomTabBar extends StatelessWidget {
+  const CustomTabBar(
+      {super.key,
+        required this.showBackArrow,
+        required this.showTabs,
+        this.title,
+        this.actions,
+        this.leadingIcon,
+        this.leadingOnPress, this.tabs, this.body});
+
+  final Widget? title, body;
+  final bool showBackArrow, showTabs;
+  final IconData? leadingIcon;
+  final List<Widget>? actions;
+  final VoidCallback? leadingOnPress;
+  final dynamic tabs;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        automaticallyImplyLeading: false,
+        leading: showBackArrow
+            ? IconButton(
+            onPressed: () => Get.back, icon: const Icon(Icons.arrow_back))
+            : IconButton(onPressed: leadingOnPress, icon: Icon(leadingIcon)),
+        title: title,
+        actions: actions,
+      ),
+      body: body,
+    );
+  }
+}
