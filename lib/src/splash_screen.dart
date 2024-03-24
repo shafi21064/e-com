@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:torganic/src/features/authentication/views/log_in/view/login.dart';
 import 'package:torganic/src/features/on_boarding/views/on_boarding.dart';
 import 'package:torganic/src/utils/constants/colors.dart';
@@ -18,16 +19,18 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
-  changeScreen() {
-    var isFirstTime = AppLocalStorage().readData(LocalStorageKeys.isFirstTime);
-    print(isFirstTime);
+  changeScreen() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    final isNotFirst = sharedPreferences.getBool('isNotFirst');
+    print('value' + isNotFirst.toString());
+    
 
-    if (isFirstTime == null ) {
+    if (isNotFirst == null ) {
       Future.delayed(const Duration(seconds: 3), () {
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const OnBoarding()));
       });
-    } else if (isFirstTime == false) {
+    } else if (isNotFirst == true) {
       Future.delayed(const Duration(seconds: 3), () {
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => const LogIn()));

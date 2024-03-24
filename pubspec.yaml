@@ -37,6 +37,9 @@ dependencies:
   get: ^4.6.6
   get_storage: ^2.1.1
 
+  #Local Strorage
+  shared_preferences: ^2.2.2
+
   # Localization
   flutter_localizations:
     sdk: flutter

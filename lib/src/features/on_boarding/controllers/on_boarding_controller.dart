@@ -1,11 +1,13 @@
 
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:torganic/src/features/authentication/views/log_in/view/login.dart';
-import 'package:torganic/src/utils/local_storage/local_storage_keys.dart';
-import 'package:torganic/src/utils/local_storage/storage_utility.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:torganic/src/features/bottom_navigation/bottom_navigation.dart';
+import 'package:torganic/src/features/bottom_navigation/bottom_navigation_two.dart';
 
+import '../../authentication/views/log_in/view/login.dart';
 
 class OnBoardingController extends GetxController{
   static OnBoardingController get instance => Get.find();
@@ -14,6 +16,8 @@ class OnBoardingController extends GetxController{
   ///Variables
   final pageController = PageController();
   Rx<int> currentPageIndex = 0.obs;
+
+
 
   /// Update Current Index when Page Scroll
   void updatePageIndicator(index){
@@ -26,12 +30,16 @@ class OnBoardingController extends GetxController{
     pageController.jumpToPage(index);
   }
 
+  /// Set OnBoarding value
+  Future setOnBoardingStatus()async{
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.setBool('isNotFirst', true);
+  }
   /// Update Current Index & Jump To Next Page
   void nextPage(){
     if(currentPageIndex.value == 2){
+      setOnBoardingStatus();
       Get.offAll(const LogIn());
-     AppLocalStorage().saveData(LocalStorageKeys.isFirstTime, false);
-     print(AppLocalStorage().readData(LocalStorageKeys.isFirstTime));
     }else{
       int page = currentPageIndex.value +1;
       pageController.jumpToPage(page);
@@ -40,6 +48,6 @@ class OnBoardingController extends GetxController{
 
   /// Skip on-boarding pages
   void skipPage(){
-    pageController.jumpToPage(2);
+    Get.offAll(const LogIn());
   }
 }
