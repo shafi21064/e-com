@@ -7,9 +7,9 @@ import 'package:torganic/src/features/authentication/views/log_in/view/login.dar
 import 'package:torganic/src/utils/constants/image_strings.dart';
 
 
-class NavBar extends StatelessWidget {
-  final String userName, roll;
-  const NavBar({required this.userName, required this.roll, super.key});
+class AppDrawer extends StatelessWidget {
+  final String userName, email;
+  const AppDrawer({required this.userName, required this.email, super.key});
 
   void _showDialog() {
     showDialog(
@@ -66,7 +66,7 @@ class NavBar extends StatelessWidget {
                           Text(userName,
                               style: Theme.of(context).textTheme.bodyLarge),
                           const Gap(5),
-                          Text(roll)
+                          Text(email)
                         ],
                       ),
                     )),

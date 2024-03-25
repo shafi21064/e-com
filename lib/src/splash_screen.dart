@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:torganic/src/features/authentication/views/log_in/view/login.dart';
-import 'package:torganic/src/features/on_boarding/views/on_boarding.dart';
-import 'package:torganic/src/utils/constants/colors.dart';
-import 'package:torganic/src/utils/constants/image_strings.dart';
-import 'package:torganic/src/utils/helpers/helper_functions.dart';
+import 'features/authentication/views/log_in/view/login.dart';
+import 'features/on_boarding/views/on_boarding.dart';
+import 'utils/constants/colors.dart';
+import 'utils/constants/image_strings.dart';
+import 'utils/helpers/helper_functions.dart';
+
 
 
 class SplashScreen extends StatefulWidget {
