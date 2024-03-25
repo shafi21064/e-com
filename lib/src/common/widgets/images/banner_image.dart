@@ -8,7 +8,6 @@ class AppBannerImage extends StatelessWidget {
     this.width,
     this.border,
     this.onPress,
-    required this.padding,
     required this.imgUrl,
     this.applyImageRadius = true,
     this.fit = BoxFit.contain,
@@ -24,7 +23,6 @@ class AppBannerImage extends StatelessWidget {
   final BoxBorder? border;
   final Color backgroundColor;
   final BoxFit? fit;
-  final EdgeInsets padding;
   final bool isNetworkImage;
   final double boarderRadius;
   final VoidCallback? onPress;
@@ -33,24 +31,21 @@ class AppBannerImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onPress,
-      child: Padding(
-        padding: padding,
-        child: Container(
-          height: height,
-          width: width,
-          decoration:
-          BoxDecoration(borderRadius: BorderRadius.circular(boarderRadius)),
-          child: ClipRRect(
-              borderRadius: applyImageRadius
-                  ? BorderRadius.circular(boarderRadius)
-                  : BorderRadius.zero,
-              child: Image(
-                image: isNetworkImage
-                    ? NetworkImage(imgUrl)
-                    : AssetImage(imgUrl) as ImageProvider,
-                fit: fit,
-              )),
-        ),
+      child: Container(
+        height: height,
+        width: width,
+        decoration:
+        BoxDecoration(borderRadius: BorderRadius.circular(boarderRadius)),
+        child: ClipRRect(
+            borderRadius: applyImageRadius
+                ? BorderRadius.circular(boarderRadius)
+                : BorderRadius.zero,
+            child: Image(
+              image: isNetworkImage
+                  ? NetworkImage(imgUrl)
+                  : AssetImage(imgUrl) as ImageProvider,
+              fit: fit,
+            )),
       ),
     );
   }

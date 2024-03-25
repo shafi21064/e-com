@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "547850683072",
+    "project_id": "app-boilerplate-8f2ca",
+    "storage_bucket": "app-boilerplate-8f2ca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:547850683072:android:9cec3b56148073a574e325",
+        "android_client_info": {
+          "package_name": "com.example.torganic"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbNVkYTBw1Oyx8jrEisTx6PHvb1Ccycd8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

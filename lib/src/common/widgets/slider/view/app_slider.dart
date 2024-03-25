@@ -22,8 +22,8 @@ class CustomSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SliderController());
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
+    return Stack(
+      //crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         CarouselSlider(
             items: items,
@@ -32,13 +32,18 @@ class CustomSlider extends StatelessWidget {
                 onPageChanged: (index, _) =>
                     controller.updateCurrentIndex(index),
                 autoPlay: true)),
-
-        Obx(() => AnimatedSmoothIndicator(
-          activeIndex: controller.carouselCurrentIndex.value,
-          count: items.length,
-          effect: const WormEffect(
-            activeDotColor: AppColors.primary,
-            dotHeight: 6
+        Obx(() => Positioned.fill(
+          bottom: 10,
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: AnimatedSmoothIndicator(
+              activeIndex: controller.carouselCurrentIndex.value,
+              count: items.length,
+              effect: const WormEffect(
+                activeDotColor: AppColors.primary,
+                dotHeight: 6
+              ),
+            ),
           ),
         ) )
 
