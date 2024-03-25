@@ -48,6 +48,6 @@ class OnBoardingController extends GetxController{
 
   /// Skip on-boarding pages
   void skipPage(){
-    Get.offAll(const LogIn());
+    pageController.jumpToPage(2);
   }
 }

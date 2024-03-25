@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:torganic/src/common/widgets/tab_bar/tab_controller.dart';
+import 'tab_controller.dart';
 
-class MyTabbedWidget extends StatelessWidget {
-  const MyTabbedWidget({super.key});
+
+class AppTabBar extends StatelessWidget {
+  const AppTabBar({super.key});
 
   @override
   Widget build(BuildContext context) {

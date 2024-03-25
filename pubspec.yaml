@@ -22,6 +22,7 @@ dependencies:
   url_launcher: ^6.2.5
   connectivity_plus: ^5.0.2
   connection_notifier: ^2.0.1
+  carousel_slider: ^4.2.1
   another_flushbar: ^1.12.30
   smooth_page_indicator: ^1.1.0
   persistent_bottom_nav_bar: any
@@ -65,6 +66,7 @@ flutter:
   assets:
     - assets/images/logos/
     - assets/images/animations/
+    - assets/images/banners/
     - assets/images/on_boarding_images/
 
 
