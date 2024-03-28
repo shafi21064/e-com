@@ -8,9 +8,10 @@ import '../../../../utils/constants/image_strings.dart';
 import '../../../../utils/helpers/helper_functions.dart';
 
 class OtherLogInOrSignUpOption extends StatelessWidget {
-  final dynamic title;
+  final String title;
+  final VoidCallback googleTap, facebookTap;
 
-  const OtherLogInOrSignUpOption({super.key, required this.title});
+  const OtherLogInOrSignUpOption({super.key, required this.title, required this.googleTap, required this.facebookTap});
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +47,10 @@ class OtherLogInOrSignUpOption extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AppButtons.smallIconButton(
-                onIconPress: () {}, iconPath: AppImages.google),
+                onIconPress: ()=> googleTap(), iconPath: AppImages.google),
             const Gap(AppSizes.spaceBtwItems),
             AppButtons.smallIconButton(
-                onIconPress: () {}, iconPath: AppImages.facebook)
+                onIconPress: ()=> facebookTap(), iconPath: AppImages.facebook)
           ],
         )
       ],

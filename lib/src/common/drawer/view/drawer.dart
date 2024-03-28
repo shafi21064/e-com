@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:torganic/src/features/authentication/views/log_in/view/login.dart';
+import 'package:torganic/src/features/feedback/view/feedback_form.dart';
+import 'package:torganic/src/utils/constants/colors.dart';
 import 'package:torganic/src/utils/constants/image_strings.dart';
 
 
@@ -96,6 +97,41 @@ class AppDrawer extends StatelessWidget {
                             'Log out',
                             style:
                             TextStyle(fontSize: 16, color: Colors.red),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
+                Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: InkWell(
+                    onTap: (){
+                      Get.to(()=> const FeedbackForm());
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(8),
+                          boxShadow: const [
+                            BoxShadow(
+                                color: Colors.black26,
+                                blurRadius: 10,
+                                spreadRadius: 4,
+                                offset: Offset(5, 5))
+                          ]),
+                      child: const Row(
+                        children: [
+                          SizedBox(width: 15),
+                          Icon(Icons.feedback),
+                          SizedBox(width: 30),
+                          Text(
+                            'Feedback',
+                            style:
+                            TextStyle(fontSize: 16, color: AppColors.black),
                           ),
                         ],
                       ),

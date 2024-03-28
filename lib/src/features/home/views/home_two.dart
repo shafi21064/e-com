@@ -18,10 +18,9 @@ class HomeTwo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(HomeController());
-    return  AppLayoutWithBackButton(
-      globalKey: controller.homeTwoKey,
-      title: const Text('back'),
-      body: const CustomSlider(
+    return  const AppLayoutWithBackButton(
+      title: Text('back'),
+      body: CustomSlider(
         items: [
           AppBannerImage(
               imgUrl: AppImages.banner1),

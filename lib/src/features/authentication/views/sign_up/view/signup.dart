@@ -35,6 +35,8 @@ class SignUp extends StatelessWidget {
               const Gap(AppSizes.spaceBtwSections),
               OtherLogInOrSignUpOption(
                 title: AppLocalizations.of(context)!.orSignUpWith,
+                googleTap: (){},
+                facebookTap: (){},
               )
             ],
           ),

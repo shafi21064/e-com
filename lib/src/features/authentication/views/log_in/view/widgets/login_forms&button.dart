@@ -57,7 +57,7 @@ class LogInFormsAndButton extends StatelessWidget {
           const Gap(AppSizes.spaceBtwSections),
           AppButtons.largeFlatFilledButton(
               onPressed: () {
-                loginController.logIn();
+                loginController.emailPasswordLogIn();
               },
               buttonText: AppLocalizations.of(context)!.login),
           const Gap(AppSizes.spaceBtwItems),

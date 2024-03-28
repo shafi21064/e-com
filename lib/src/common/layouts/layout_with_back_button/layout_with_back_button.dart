@@ -11,7 +11,6 @@ class AppLayoutWithBackButton extends StatelessWidget {
 
     required this.title,
     required this.body,
-    required this.globalKey,
     this.centerTitle = false,
     this.action,
     this.backgroundColor = AppColors.light,
@@ -21,13 +20,12 @@ class AppLayoutWithBackButton extends StatelessWidget {
   final bool centerTitle;
   final Color backgroundColor;
   final List<Widget>? action;
-  final dynamic globalKey;
 
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: globalKey,
+
       drawer: const AppDrawer(
         userName: 'User Name',
         email: 'example@email.com',),

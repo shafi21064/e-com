@@ -1,3 +1,4 @@
+import 'package:custom_refresh_indicator/custom_refresh_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:torganic/src/common/styles/spacing_style.dart';
 import '../../../utils/constants/colors.dart';
@@ -6,9 +7,9 @@ import '../../widgets/appbar/custom_app_bar.dart';
 
 class AppLayoutWithDrawer extends StatelessWidget {
   const AppLayoutWithDrawer(
-      {required this.title,
+      {required this.globalKey,
+      required this.title,
       required this.body,
-      required this.globalKey,
       this.centerTitle = false,
       this.action,
       this.backgroundColor = AppColors.light,
