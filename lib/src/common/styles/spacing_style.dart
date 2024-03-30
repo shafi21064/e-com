@@ -9,10 +9,7 @@ class AppSpacingStyle{
     bottom: AppSizes.defaultSpace
   );
 
-  // static const EdgeInsetsGeometry paddingWithStatusBarHeight = EdgeInsets.only(
-  //     top: AppSizes.,
-  //     left: AppSizes.defaultSpace,
-  //     right: AppSizes.defaultSpace,
-  //     bottom: AppSizes.defaultSpace
-  // );
+  static const EdgeInsetsGeometry defaultSpacing = EdgeInsets.symmetric(
+      horizontal: AppSizes.defaultSpace
+  );
 }

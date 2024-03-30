@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:torganic/src/features/on_boarding/controlers/on_boarding_controller.dart';
-import 'package:torganic/src/utils/constants/text_strings.dart';
 import '../../../utils/constants/image_strings.dart';
+import '../../../utils/constants/text_strings.dart';
+import '../controllers/on_boarding_controller.dart';
 import './widgets/on_boarding_page.dart';
 import './widgets/on_boarding_skip.dart';
 import './widgets/on_boarding_dot_navigation.dart';

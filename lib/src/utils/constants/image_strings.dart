@@ -12,6 +12,9 @@ class AppImages {
   static const String google = "assets/images/logos/google-icon.png";
   static const String facebook = "assets/images/logos/facebook-icon.png";
 
+  // -- Lottie File
+  static const String loaderAnimation = "assets/images/animations/loader-animation.json";
+
   // -- Category Icons
   static const String sportIcon = "assets/icons/categories/icons8-bowling-64.png";
   static const String clothIcon = "assets/icons/categories/icons8-tailors-dummy-64.png";
