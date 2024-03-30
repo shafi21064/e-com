@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:torganic/src/common/layouts/layout_with_back_button/layout_with_back_button.dart';
-import 'package:torganic/src/common/layouts/layout_with_drawer/layout_with_drawer.dart';
-import 'package:torganic/src/features/feedback/controller/feedback_controller.dart';
-import 'package:torganic/src/features/feedback/view/widget/trouble_checklist.dart';
-import 'package:torganic/src/utils/constants/colors.dart';
-import 'package:torganic/src/utils/constants/sizes.dart';
-import 'package:torganic/src/utils/helpers/helper_functions.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../../common/layouts/layout_with_back_button/layout_with_back_button.dart';
+import '../../../common/widgets/buttons/app_buttons.dart';
+import '../../../utils/constants/colors.dart';
+import '../../../utils/constants/sizes.dart';
+import '../../../utils/helpers/helper_functions.dart';
+import '../controller/feedback_controller.dart';
+import 'widget/message_form.dart';
+import 'widget/trouble_checklist.dart';
 
 class FeedbackForm extends StatelessWidget {
   const FeedbackForm({super.key});
@@ -63,12 +62,15 @@ class FeedbackForm extends StatelessWidget {
                     !controller.otherTrouble.value;
                   }),
             ),
-            TextField(
-              decoration: InputDecoration(
-
-              ),
-            )
+            const Gap(AppSizes.spaceBtwSections),
+            const MessageForm(),
+            const Gap(AppSizes.spaceBtwSections),
+            AppButtons.largeFlatFilledButton(
+                onPressed: (){},
+                buttonText: AppLocalizations.of(context)!.submit)
           ],
         ));
   }
 }
+
+

@@ -5,6 +5,7 @@ import 'package:torganic/src/common/layouts/layout_with_drawer/layout_with_drawe
 import 'package:torganic/src/common/widgets/buttons/app_buttons.dart';
 import 'package:torganic/src/features/cart/controller/cart_controller.dart';
 import 'package:torganic/src/features/pdf_viewer/view/pdf_screen.dart';
+import 'package:torganic/src/features/video_player/view/video_player.dart';
 import 'package:torganic/src/features/web_view/web_view.dart';
 import 'package:torganic/src/utils/constants/sizes.dart';
 
@@ -37,7 +38,13 @@ class Cart extends StatelessWidget {
                     newsUrl: 'https://www.google.com/',
                   ));
                 },
-                buttonText: 'Show web')
+                buttonText: 'Show web'),
+            const Gap(AppSizes.spaceBtwItems),
+            AppButtons.largeFlatFilledButton(
+                onPressed: () {
+                  Get.to(() => const VideoApp());
+                },
+                buttonText: 'Show video')
           ]
         ),
       ),

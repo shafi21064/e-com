@@ -12,4 +12,7 @@ class FeedbackController extends GetxController{
   Rx<bool> personalProfileTrouble = false.obs;
   Rx<bool> otherTrouble = false.obs;
 
+  /// Text Field Controller
+  final feedBackController = TextEditingController();
+
 }

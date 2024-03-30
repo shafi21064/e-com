@@ -14,7 +14,6 @@ class TroubleChecklist extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = FeedbackController().instance;
     final isDark = AppHelperFunctions.isDarkMode(context);
     return  Row(
         children: [
