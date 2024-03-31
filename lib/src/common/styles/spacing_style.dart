@@ -12,4 +12,10 @@ class AppSpacingStyle{
   static const EdgeInsetsGeometry defaultSpacing = EdgeInsets.symmetric(
       horizontal: AppSizes.defaultSpace
   );
+
+  static const EdgeInsetsGeometry allSIdeSpacing = EdgeInsets.all(
+    AppSizes.defaultSpace
+  );
+
+  static const EdgeInsetsGeometry zeroSpacing = EdgeInsets.zero;
 }

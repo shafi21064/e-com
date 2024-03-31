@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class News extends StatefulWidget {
+class WebViewScreen extends StatefulWidget {
 
-  String newsUrl;
+  String url;
 
-  News({super.key,  required this.newsUrl});
+  WebViewScreen({super.key,  required this.url});
 
   @override
-  State<News> createState() => _NewsState();
+  State<WebViewScreen> createState() => _WebViewScreenState();
 }
 
-class _NewsState extends State<News> {
+class _WebViewScreenState extends State<WebViewScreen> {
   @override
   Widget build(BuildContext context) {
-//     WebViewController controller = WebViewController();
+//     WebViewController controllers = WebViewController();
 //       ..setJavaScriptMode(JavaScriptMode.unrestricted)
 //       ..setBackgroundColor(const Color(0x00000000))
 //       ..setNavigationDelegate(
