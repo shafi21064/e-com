@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:torganic/src/features/bottom_navigation/bottom_navigation.dart';
+import 'package:torganic/src/features/personalization/view/profile.dart';
 import 'package:torganic/src/features/video_player/view/video_player.dart';
 import './splash_screen.dart';
 import './utils/theme/theme.dart';
