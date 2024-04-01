@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:torganic/src/features/authentication/data/repositories/auth_repositories.dart';
 import 'package:torganic/src/features/authentication/views/log_in/view/login.dart';
 import 'package:torganic/src/features/feedback/view/feedback_form.dart';
 import 'package:torganic/src/utils/constants/colors.dart';
@@ -13,6 +14,7 @@ class AppDrawer extends StatelessWidget {
   const AppDrawer({required this.userName, required this.email, super.key});
 
   void _showDialog() {
+    final controller = Get.put(AuthRepositories());
     showDialog(
         context: Get.overlayContext!,
         builder: (context) {
@@ -27,7 +29,7 @@ class AppDrawer extends StatelessWidget {
                 children: [
                   CupertinoButton(
                       onPressed: () async {
-                        Get.offAll(const LogIn());
+                        controller.logout();
                       },
                       child: const Text(
                         'Yes',
@@ -35,7 +37,7 @@ class AppDrawer extends StatelessWidget {
                       )),
                   CupertinoButton(
                       onPressed: () {
-                        Navigator.of(context).pop();
+                        Get.back();
                       },
                       child: const Text('No')),
                 ],

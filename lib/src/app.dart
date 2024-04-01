@@ -7,7 +7,7 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:torganic/src/features/bottom_navigation/bottom_navigation.dart';
 import 'package:torganic/src/features/personalization/view/profile.dart';
 import 'package:torganic/src/features/video_player/view/video_player.dart';
-import './splash_screen.dart';
+import 'features/splash/view/splash_screen.dart';
 import './utils/theme/theme.dart';
 import './utils/constants/text_strings.dart';
 import 'common/bindings/general_bingdings.dart';

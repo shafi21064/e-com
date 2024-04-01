@@ -36,6 +36,7 @@ dependencies:
   loader_overlay: ^4.0.0
   fluttertoast: ^8.2.4
   google_fonts: ^6.2.1
+  shimmer: ^3.0.0
   fl_chart: ^0.66.2
   gap: ^3.0.1
 
@@ -47,9 +48,6 @@ dependencies:
   get: ^4.6.6
   get_storage: ^2.1.1
 
-  #Local Strorage
-  shared_preferences: ^2.2.2
-
   # Localization
   flutter_localizations:
     sdk: flutter
@@ -60,6 +58,7 @@ dependencies:
   firebase_auth: ^4.18.0
   firebase_messaging: ^14.7.20
   cloud_firestore: ^4.15.10
+
 
 
 

@@ -9,6 +9,8 @@ import 'package:torganic/src/utils/constants/colors.dart';
 import 'package:torganic/src/utils/constants/image_strings.dart';
 import 'package:torganic/src/utils/helpers/helper_functions.dart';
 import 'package:torganic/src/utils/helpers/network_manager.dart';
+import 'package:torganic/src/utils/local_storage/local_storage_keys.dart';
+import 'package:torganic/src/utils/local_storage/storage_utility.dart';
 import 'package:torganic/src/utils/popups/loaders.dart';
 
 import '../../../../../utils/popups/full_screen_loader.dart';
@@ -26,7 +28,7 @@ class LogInPageController extends GetxController {
 
   /// variables
   Rx<bool> passwordObscured = true.obs;
-  Rx<bool> rememberMe = true.obs;
+  Rx<bool> rememberMe = false.obs;
 
   Future<void> emailPasswordLogIn() async {
     final isConnected = await NetworkManager.instance.isConnected();
@@ -39,6 +41,8 @@ class LogInPageController extends GetxController {
 
       ///Check Internet
       if (!isConnected) return;
+      AppLocalStorage()
+          .saveData(LocalStorageKeys.isRememberMe, rememberMe.value);
     } catch (e) {
       /// Error
       AppLoaders.errorSnackBar(title: 'oh, Snap', message: e.toString());
@@ -72,10 +76,13 @@ class LogInPageController extends GetxController {
       Get.offAll(const BottomNavigation());
       AppHelperFunctions.getSnackBar(
           title: 'Loged in', backgroundColor: AppColors.primary);
+
+      AppLocalStorage().saveDataIfNull(LocalStorageKeys.isGoogleLogIn, true);
     } catch (e) {
       FullScreenLoader.stopLoading();
       debugPrint(e.toString());
       AppLoaders.errorSnackBar(title: 'oh Snap..', message: e.toString());
     }
   }
+
 }

@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:torganic/src/common/layouts/layout_with_drawer/layout_with_drawer.dart';
 import 'package:torganic/src/common/styles/spacing_style.dart';
+import 'package:torganic/src/features/authentication/data/repositories/auth_repositories.dart';
 import 'package:torganic/src/features/authentication/views/log_in/view/login.dart';
 import 'package:torganic/src/utils/constants/colors.dart';
 import 'package:torganic/src/utils/constants/image_strings.dart';
@@ -18,6 +19,7 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final profileController = Get.put(UserController());
+    final authController = Get.put(AuthRepositories());
     return AppLayoutWithDrawer(
         globalKey: profileController.profileKey,
         title: const Text('Profile'),
@@ -33,7 +35,7 @@ class Profile extends StatelessWidget {
                 padding: AppSpacingStyle.defaultSpacing,
                 child: DetailsCard(
                   onTap: (){
-                    Get.offAll(()=> const LogIn());
+                    authController.logout();
                   },
                   imagePath: AppImages.exitIcon,
                   cardText: 'Logout',

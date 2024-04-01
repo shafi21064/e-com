@@ -6,12 +6,16 @@ import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:torganic/src/features/authentication/views/log_in/view/login.dart';
 import 'package:torganic/src/features/bottom_navigation/bottom_navigation.dart';
+import 'package:torganic/src/utils/constants/image_strings.dart';
 import 'package:torganic/src/utils/device/device_utility.dart';
 import 'package:torganic/src/utils/exceptions/exceptions.dart';
 import 'package:torganic/src/utils/exceptions/firebase_auth_exceptions.dart';
 import 'package:torganic/src/utils/exceptions/firebase_exceptions.dart';
 import 'package:torganic/src/utils/exceptions/platform_exceptions.dart';
 import 'package:torganic/src/utils/helpers/helper_functions.dart';
+import 'package:torganic/src/utils/local_storage/local_storage_keys.dart';
+import 'package:torganic/src/utils/local_storage/storage_utility.dart';
+import 'package:torganic/src/utils/popups/full_screen_loader.dart';
 
 class AuthRepositories extends GetxController {
   static AuthRepositories get instance => Get.find();
@@ -61,8 +65,12 @@ class AuthRepositories extends GetxController {
   /// logout user
   Future<void> logout () async {
     try{
+      FullScreenLoader.openLoadingDialog('Signing out', AppImages.loading);
       await FirebaseAuth.instance.signOut();
       Get.offAll(()=> const LogIn());
+      AppLocalStorage().saveData(LocalStorageKeys.isRememberMe, false);
+      AppLocalStorage().saveData(LocalStorageKeys.isGoogleLogIn, false);
+      FullScreenLoader.stopLoading();
     } on FirebaseAuthException catch (e) {
       throw AppFirebaseAuthException(e.code).message;
     } on FirebaseException catch (e){
@@ -72,6 +80,7 @@ class AuthRepositories extends GetxController {
     } on PlatformException catch (e){
       throw AppPlatformException(e.code).message;
     } catch(e) {
+      FullScreenLoader.stopLoading();
       throw 'Something went wrong';
     }
   }
