@@ -2,21 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:torganic/src/utils/constants/sizes.dart';
 
+import '../../../../utils/constants/colors.dart';
+import '../../../../utils/helpers/helper_functions.dart';
+
 class DetailsCard extends StatelessWidget {
   final String cardText, imagePath;
-  final Color textColor, cardColor;
+  final Color? cardColor;
   final dynamic onTap;
 
   const DetailsCard(
       {super.key,
       required this.imagePath,
       required this.cardText,
-      this.textColor = const Color(0xff404040),
       required this.onTap,
-      this.cardColor = Colors.white});
+      this.cardColor});
 
   @override
   Widget build(BuildContext context) {
+    final isDark = AppHelperFunctions.isDarkMode(context);
     return Row(
       children: [
         Container(
@@ -24,11 +27,11 @@ class DetailsCard extends StatelessWidget {
           height: 50,
           width: 50,
           decoration: BoxDecoration(
-              color: Colors.white,
+              color: isDark ? AppColors.darkerGrey : AppColors.white,
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                    color: const Color(0xff707070).withOpacity(.5),
+                    color: isDark? AppColors.light.withOpacity(.5) : AppColors.dark.withOpacity(.5),
                     blurRadius: 2,
                     offset: const Offset(0, 1))
               ]),
@@ -41,18 +44,18 @@ class DetailsCard extends StatelessWidget {
               alignment: Alignment.centerLeft,
               height: 50,
               width: 280,
-              decoration: BoxDecoration(color: cardColor, boxShadow: [
+              decoration: BoxDecoration(color: cardColor ?? (isDark? AppColors.dark : AppColors.white),
+                  boxShadow: [
                 BoxShadow(
                     color: Colors.grey.withOpacity(.3),
-                    //blurRadius: 2,
                     offset: const Offset(0, 2))
-              ]),
+              ]
+              ),
               child: Text(
                 cardText,
                 style: Theme.of(context)
                     .textTheme
-                    .titleSmall!
-                    .apply(color: textColor),
+                    .titleSmall
               )),
         ),
       ],

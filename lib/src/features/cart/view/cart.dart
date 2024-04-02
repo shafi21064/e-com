@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
+import 'package:torganic/src/features/payment_gateway/bkash/product_page.dart';
 import '../../../common/layouts/layout_with_drawer/layout_with_drawer.dart';
 import '../../../common/widgets/buttons/app_buttons.dart';
 import '../../../utils/constants/sizes.dart';
@@ -34,9 +35,9 @@ class Cart extends StatelessWidget {
             const Gap(AppSizes.spaceBtwItems),
             AppButtons.largeFlatFilledButton(
                 onPressed: () {
-                  Get.to(() =>  WebViewScreen(
-                    url: 'https://www.google.com/',
-                  ));
+                  // Get.to(() =>  WebViewScreen(
+                  //   url: 'https://www.google.com/',
+                  // ));
                 },
                 buttonText: 'Show web'),
             const Gap(AppSizes.spaceBtwItems),
@@ -44,7 +45,13 @@ class Cart extends StatelessWidget {
                 onPressed: () {
                   Get.to(() => const VideoApp());
                 },
-                buttonText: 'Show video')
+                buttonText: 'Show video'),
+            const Gap(AppSizes.spaceBtwItems),
+            AppButtons.largeFlatFilledButton(
+                onPressed: () {
+                  Get.to(() => const ProductPage());
+                },
+                buttonText: 'Payment')
           ]
         ),
       ),

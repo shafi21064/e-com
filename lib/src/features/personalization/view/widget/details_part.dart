@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:torganic/src/common/styles/spacing_style.dart';
 import 'package:torganic/src/utils/constants/colors.dart';
 import 'package:torganic/src/utils/constants/image_strings.dart';
 import 'package:torganic/src/utils/constants/sizes.dart';
+import '../../../../utils/helpers/helper_functions.dart';
 import 'details_card.dart';
 
 
@@ -12,34 +14,34 @@ class DetailsPart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = AppHelperFunctions.isDarkMode(context);
     return Container(
       padding: AppSpacingStyle.allSIdeSpacing,
-      color: Colors.white,
+        //color: isDark ? AppColors.darkerGrey : AppColors.white,
       child: Column(
         children: [
           DetailsCard(
               onTap: (){},
               imagePath: AppImages.homeIcon,
-              cardText: 'Order Details',
-              textColor: AppColors.primary
+              cardText: AppLocalizations.of(context)!.orderDetails,
           ),
           const Gap(AppSizes.spaceBtwItems),
           DetailsCard(
             onTap: (){},
             imagePath: AppImages.profileIcon,
-            cardText: 'Edit Profile',
+            cardText: AppLocalizations.of(context)!.editProfile,
           ),
           const Gap(AppSizes.spaceBtwItems),
           DetailsCard(
             onTap: (){},
             imagePath: AppImages.addressIcon,
-            cardText: 'Address',
+            cardText: AppLocalizations.of(context)!.address,
           ),
           const Gap(AppSizes.spaceBtwItems),
           DetailsCard(
             onTap: (){},
             imagePath: AppImages.translateIcon,
-            cardText: 'Change Language',
+            cardText: AppLocalizations.of(context)!.changeLanguage,
           )
         ],
       ),

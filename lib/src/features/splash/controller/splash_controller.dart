@@ -16,13 +16,16 @@ class SplashController extends GetxController {
 
   changeScreen() {
     final isGoogleLogin =
-        AppLocalStorage().readData(LocalStorageKeys.isGoogleLogIn);
+        AppLocalStorage().readData(LocalStorageKeys.isGoogleLogIn) ?? false;
     final isRememberMe =
-        AppLocalStorage().readData(LocalStorageKeys.isRememberMe);
+        AppLocalStorage().readData(LocalStorageKeys.isRememberMe) ?? false;
     final isNotFirst =
-        AppLocalStorage().readData(LocalStorageKeys.isNotFirstTime);
+        AppLocalStorage().readData(LocalStorageKeys.isNotFirstTime) ?? false;
     Future.delayed(const Duration(seconds: 3), () {
-      isNotFirst != null
+      print('value $isNotFirst');
+      print('value $isRememberMe');
+      print('value $isGoogleLogin');
+      isNotFirst == true
           ? (isRememberMe || isGoogleLogin
               ? Get.offAll(() => const BottomNavigation())
               : Get.offAll(() => const LogIn()))

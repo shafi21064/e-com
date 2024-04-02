@@ -15,23 +15,25 @@ class ForgotPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     final forgotController = Get.put(ForgotPasswordController());
     return Scaffold(
-      body: Padding(
-        padding: AppSpacingStyle.paddingWithAppBarHeight,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Image(
-              image: AssetImage(AppImages.darkAppLogo),
-              width: AppSizes.imageThumbSize,
-            ),
-            const Gap(AppSizes.spaceBtwSections),
-            Text(
-              AppLocalizations.of(context)!.forgotPassword,
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            const Gap(AppSizes.spaceBtwSections),
-            const ForgotFormsAndButton()
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: AppSpacingStyle.paddingWithAppBarHeight,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Image(
+                image: AssetImage(AppImages.darkAppLogo),
+                width: AppSizes.imageThumbSize,
+              ),
+              const Gap(AppSizes.spaceBtwSections),
+              Text(
+                AppLocalizations.of(context)!.forgotPassword,
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              const Gap(AppSizes.spaceBtwSections),
+              const ForgotFormsAndButton()
+            ],
+          ),
         ),
       ),
     );

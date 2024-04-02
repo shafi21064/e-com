@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:loader_overlay/loader_overlay.dart';
 import 'package:torganic/src/features/authentication/data/repositories/auth_repositories.dart';
 import 'package:torganic/src/features/bottom_navigation/bottom_navigation.dart';
-import 'package:torganic/src/features/home/views/home.dart';
 import 'package:torganic/src/features/personalization/controller/user_controller.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:torganic/src/utils/constants/colors.dart';
 import 'package:torganic/src/utils/constants/image_strings.dart';
 import 'package:torganic/src/utils/helpers/helper_functions.dart';
@@ -12,7 +11,6 @@ import 'package:torganic/src/utils/helpers/network_manager.dart';
 import 'package:torganic/src/utils/local_storage/local_storage_keys.dart';
 import 'package:torganic/src/utils/local_storage/storage_utility.dart';
 import 'package:torganic/src/utils/popups/loaders.dart';
-
 import '../../../../../utils/popups/full_screen_loader.dart';
 
 class LogInPageController extends GetxController {
@@ -37,7 +35,9 @@ class LogInPageController extends GetxController {
       if (!logInFormKey.currentState!.validate()) return;
 
       /// Start Loading
-      FullScreenLoader.openLoadingDialog('Processing', AppImages.loading);
+      FullScreenLoader.openLoadingDialog(
+          AppLocalizations.of(Get.overlayContext!)!.processing,
+          AppImages.loading);
 
       ///Check Internet
       if (!isConnected) return;
@@ -57,7 +57,9 @@ class LogInPageController extends GetxController {
   Future<void> googleSignIn() async {
     final isConnected = await NetworkManager.instance.isConnected();
     try {
-      FullScreenLoader.openLoadingDialog('Signing in', AppImages.loading);
+      FullScreenLoader.openLoadingDialog(
+          AppLocalizations.of(Get.overlayContext!)!.singingIn,
+          AppImages.loading);
 
       if (!isConnected) {
         FullScreenLoader.stopLoading();
@@ -75,14 +77,14 @@ class LogInPageController extends GetxController {
 
       Get.offAll(const BottomNavigation());
       AppHelperFunctions.getSnackBar(
-          title: 'Loged in', backgroundColor: AppColors.primary);
+          title: AppLocalizations.of(Get.overlayContext!)!.loggedIn,
+          backgroundColor: AppColors.primary);
 
-      AppLocalStorage().saveDataIfNull(LocalStorageKeys.isGoogleLogIn, true);
+      AppLocalStorage().saveData(LocalStorageKeys.isGoogleLogIn, true);
     } catch (e) {
       FullScreenLoader.stopLoading();
       debugPrint(e.toString());
       AppLoaders.errorSnackBar(title: 'oh Snap..', message: e.toString());
     }
   }
-
 }

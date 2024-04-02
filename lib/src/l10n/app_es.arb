@@ -16,12 +16,27 @@
   "verifyYourself" : "Verify yourself",
   "verify" : "Verify",
   "login" : "Login",
+  "logoutWarning" : "Are you sure you want to Log out?",
+  "logout" : "Log out",
   "signUp" : "Register",
   "skip" : "Skip",
   "submit" : "Submit",
   "done" : "Done",
   "and" : "and",
   "search" : "Search..",
-  "start" : "Start"
+  "start" : "Start",
+  "yes" : "Yes",
+  "no" : "No",
+  "feedback" : "Feedback",
+  "profile" : "Profile",
+  "orderDetails" : "Order Details",
+  "editProfile" : "Edit Profile",
+  "address" : "Address",
+  "changeLanguage" : "Change Language",
+  "somethingWentWrong" : "Something went wrong",
+  "singingOut" : "Signing out",
+  "processing" : "Processing",
+  "singingIn" : "Singing in",
+  "loggedIn" : "Logged in"
 
 }

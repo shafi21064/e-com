@@ -35,12 +35,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               onPressed: () => Get.back(),
               icon: Icon(
                 Icons.arrow_back,
-                color: isDark ? AppColors.light : AppColors.dark,
+                //color: isDark ? AppColors.light : AppColors.dark,
               ))
           : IconButton(
               onPressed: leadingOnPress,
               icon: Icon(leadingIcon,
-                  color: isDark ? AppColors.light : AppColors.dark)),
+                  //color: isDark ? AppColors.light : AppColors.dark
+              )),
       title: title,
       actions: actions,
     );
