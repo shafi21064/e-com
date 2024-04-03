@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:torganic/src/features/cart/view/cart.dart';
 import 'package:torganic/src/features/graph_chart/view/graph_screen.dart';
-import 'package:torganic/src/features/home/views/home.dart';
 import 'package:torganic/src/features/home/views/home_three.dart';
-import 'package:torganic/src/features/home/views/home_two.dart';
 import 'package:torganic/src/utils/constants/colors.dart';
 import 'package:torganic/src/utils/helpers/helper_functions.dart';
+
+import '../personalization/view/profile.dart';
 
 
 PersistentTabController _controller = PersistentTabController(initialIndex: 0);
@@ -52,7 +52,8 @@ List<Widget> _buildScreens() {
   return [
     const HomeThree(),
     const Cart(),
-    const GraphScreen()
+    const GraphScreen(),
+    const Profile()
   ];
 }
 
@@ -73,6 +74,12 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
     PersistentBottomNavBarItem(
       icon: const Icon(CupertinoIcons.graph_square),
       title: ("Graph"),
+      activeColorPrimary: CupertinoColors.activeBlue,
+      inactiveColorPrimary: CupertinoColors.systemGrey,
+    ),
+    PersistentBottomNavBarItem(
+      icon: const Icon(CupertinoIcons.profile_circled),
+      title: ("Profile"),
       activeColorPrimary: CupertinoColors.activeBlue,
       inactiveColorPrimary: CupertinoColors.systemGrey,
     ),

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:torganic/src/features/feedback/controller/feedback_controller.dart';
 import 'package:torganic/src/utils/helpers/helper_functions.dart';
 import '../../../../utils/constants/colors.dart';
 

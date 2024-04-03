@@ -39,7 +39,7 @@ class OtpController extends GetxController{
     }finally{
       FullScreenLoader.stopLoading();
       if(otpKey.currentState!.validate()){
-        Get.offAll(const NewPassword());
+        Get.to(const NewPassword());
       }
     }
   }

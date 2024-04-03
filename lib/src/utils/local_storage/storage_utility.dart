@@ -11,6 +11,11 @@ class AppLocalStorage {
 
   final _storage = GetStorage();
 
+  // method to save data if null
+  Future<void> saveDataIfNull<T>(String key, T value) async {
+    await _storage.writeIfNull(key, value);
+  }
+
   // Generic method to save data
   Future<void> saveData<T>(String key, T value) async {
     await _storage.write(key, value);

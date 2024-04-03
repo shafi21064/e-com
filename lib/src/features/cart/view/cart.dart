@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:get/get.dart';
-import 'package:torganic/src/common/layouts/layout_with_drawer/layout_with_drawer.dart';
-import 'package:torganic/src/common/widgets/buttons/app_buttons.dart';
-import 'package:torganic/src/features/cart/controller/cart_controller.dart';
-import 'package:torganic/src/features/pdf_viewer/view/pdf_screen.dart';
-import 'package:torganic/src/features/video_player/view/video_player.dart';
-import 'package:torganic/src/features/web_view/web_view.dart';
-import 'package:torganic/src/utils/constants/sizes.dart';
+import 'package:torganic/src/features/payment_gateway/bkash/product_page.dart';
+import '../../../common/layouts/layout_with_drawer/layout_with_drawer.dart';
+import '../../../common/widgets/buttons/app_buttons.dart';
+import '../../../utils/constants/sizes.dart';
+import '../../pdf_viewer/view/pdf_screen.dart';
+import '../../video_player/view/video_player.dart';
+import '../../web_view/web_view.dart';
+import '../controllers/cart_controller.dart';
 
 class Cart extends StatelessWidget {
   const Cart({super.key});
@@ -34,9 +35,9 @@ class Cart extends StatelessWidget {
             const Gap(AppSizes.spaceBtwItems),
             AppButtons.largeFlatFilledButton(
                 onPressed: () {
-                  Get.to(() =>  News(
-                    newsUrl: 'https://www.google.com/',
-                  ));
+                  // Get.to(() =>  WebViewScreen(
+                  //   url: 'https://www.google.com/',
+                  // ));
                 },
                 buttonText: 'Show web'),
             const Gap(AppSizes.spaceBtwItems),
@@ -44,7 +45,13 @@ class Cart extends StatelessWidget {
                 onPressed: () {
                   Get.to(() => const VideoApp());
                 },
-                buttonText: 'Show video')
+                buttonText: 'Show video'),
+            const Gap(AppSizes.spaceBtwItems),
+            AppButtons.largeFlatFilledButton(
+                onPressed: () {
+                  Get.to(() => const ProductPage());
+                },
+                buttonText: 'Payment')
           ]
         ),
       ),

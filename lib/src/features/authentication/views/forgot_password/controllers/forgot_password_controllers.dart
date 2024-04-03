@@ -38,7 +38,7 @@ class ForgotPasswordController extends GetxController{
     }finally{
       FullScreenLoader.stopLoading();
       if(forgotEmailKey.currentState!.validate()){
-        Get.offAll(const Otp());
+        Get.to(const Otp());
       }
     }
   }

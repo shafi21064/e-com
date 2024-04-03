@@ -9,7 +9,7 @@ class AppTabBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final MyTabController _tabx = Get.put(MyTabController());
-    // ↑ init tab controller
+    // ↑ init tab controllers
 
     return Scaffold(
       appBar: AppBar(

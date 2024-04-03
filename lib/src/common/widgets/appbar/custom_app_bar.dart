@@ -14,33 +14,31 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.leadingIcon,
       this.leadingOnPress,
       required this.showBackArrow,
-      required this.backgroundColor,
+      this.showLeadingIcon = true,
       this.centerTitle = false});
 
   final Widget? title;
-  final bool showBackArrow, centerTitle;
-  final Color backgroundColor;
+  final bool showBackArrow, centerTitle, showLeadingIcon;
   final IconData? leadingIcon;
   final List<Widget>? actions;
   final VoidCallback? leadingOnPress;
 
   @override
   Widget build(BuildContext context) {
-    final isDark = AppHelperFunctions.isDarkMode(context);
     return AppBar(
       automaticallyImplyLeading: false,
       centerTitle: centerTitle,
       leading: showBackArrow
           ? IconButton(
               onPressed: () => Get.back(),
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back,
-                color: isDark ? AppColors.light : AppColors.dark,
               ))
-          : IconButton(
+          : showLeadingIcon? IconButton(
               onPressed: leadingOnPress,
-              icon: Icon(leadingIcon,
-                  color: isDark ? AppColors.light : AppColors.dark)),
+              icon: Icon(
+                leadingIcon,
+              )) : null,
       title: title,
       actions: actions,
     );

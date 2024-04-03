@@ -25,16 +25,18 @@ class AuthInputField extends StatelessWidget {
       controller: controller,
       obscureText: obscured,
       decoration: InputDecoration(
-          hintText: hingText,
-          suffixIcon: suffixIcon,
-          focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(0),
-              borderSide: BorderSide(
-                  color: isDark ? AppColors.white : AppColors.darkGrey)),
-          enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(0),
-              borderSide: BorderSide(color: isDark? AppColors.lightGrey : AppColors.grey)
-          )
+        hintText: hingText,
+        suffixIcon: suffixIcon,
+        focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: isDark ? AppColors.white : AppColors.darkGrey)),
+        enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: isDark ? AppColors.lightGrey : AppColors.grey)),
+        errorBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.error)),
+        focusedErrorBorder: const OutlineInputBorder(
+            borderSide: BorderSide(color: AppColors.error)),
       ),
     );
   }

@@ -1,13 +1,12 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:torganic/src/utils/constants/image_strings.dart';
 import 'package:torganic/src/utils/helpers/network_manager.dart';
 import 'package:torganic/src/utils/popups/loaders.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../../../../utils/popups/full_screen_loader.dart';
 
-class SignUpPageController extends GetxController{
+class SignUpPageController extends GetxController {
   static SignUpPageController get instance => Get.find();
 
   ///Controllers
@@ -19,25 +18,23 @@ class SignUpPageController extends GetxController{
   Rx<bool> passwordObscured = true.obs;
   Rx<bool> confirmPasswordObscured = true.obs;
 
-
-  Future<void> signUp() async{
+  Future<void> signUp() async {
     final isConnected = await NetworkManager.instance.isConnected();
-    try{
+    try {
       /// Start Loading
-      FullScreenLoader.openLoadingDialog('Processing', AppImages.loaderAnimation);
+      FullScreenLoader.openLoadingDialog(
+          AppLocalizations.of(Get.overlayContext!)!.processing,
+          AppImages.loaderAnimation);
 
       ///Check Internet
-      if(!isConnected) return;
+      if (!isConnected) return;
 
       /// Validate Form
-      if(!signupFormKey.currentState!.validate()) return;
-
-
-
-    }catch(e){
+      if (!signupFormKey.currentState!.validate()) return;
+    } catch (e) {
       /// Error
       AppLoaders.errorSnackBar(title: 'oh, Snap', message: e.toString());
-    }finally{
+    } finally {
       FullScreenLoader.stopLoading();
     }
   }
