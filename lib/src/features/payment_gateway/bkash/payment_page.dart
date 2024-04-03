@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bkash/flutter_bkash.dart';
+import 'package:get/get.dart';
+import 'package:torganic/src/features/bottom_navigation/bottom_navigation.dart';
 import 'widget/packageCard.dart';
 
 class Payment extends StatefulWidget {
@@ -18,9 +20,9 @@ class _PaymentState extends State<Payment> {
     // sandbox
     final flutterBkash = FlutterBkash();
 
-    //  production
+    // production
     // final flutterBkash = FlutterBkash(
-    //   credentials: BkashCredentials(
+    //   bkashCredentials: BkashCredentials(
     //     username: "app_username",
     //     password: "app_password",
     //     appKey: "app_key",
@@ -97,7 +99,7 @@ class _PaymentState extends State<Payment> {
                   3,
                       () {
                     setState(() {
-                      isLoading = true;
+                      isLoading = false;
                     });
                     paymentCheckout(200);
                   },

@@ -14,13 +14,11 @@ class AppLayoutWithDrawer extends StatelessWidget {
       required this.body,
       this.centerTitle = false,
       this.action,
-      this.backgroundColor = AppColors.light,
       this.padding = AppSpacingStyle.defaultSpacing,
       super.key});
 
   final Widget title, body;
   final bool centerTitle;
-  final Color backgroundColor;
   final List<Widget>? action;
   final dynamic globalKey;
   final EdgeInsetsGeometry padding;
@@ -28,6 +26,7 @@ class AppLayoutWithDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       key: globalKey,
       drawer: const AppDrawer(
         userName: 'User Name',
@@ -39,7 +38,7 @@ class AppLayoutWithDrawer extends StatelessWidget {
         leadingIcon: Icons.menu,
         leadingOnPress: () => globalKey.currentState!.openDrawer(),
         centerTitle: centerTitle,
-        backgroundColor: backgroundColor,
+        //backgroundColor: backgroundColor,
         actions: action,
       ),
       body: Padding(padding: padding, child: body),

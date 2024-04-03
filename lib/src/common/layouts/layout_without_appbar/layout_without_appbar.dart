@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:torganic/src/common/drawer/view/drawer.dart';
 import 'package:torganic/src/common/widgets/appbar/custom_app_bar.dart';
 import 'package:torganic/src/utils/constants/colors.dart';
 import '../../../utils/helpers/helper_functions.dart';
 import '../../styles/spacing_style.dart';
 
-class AppLayoutWithBackButton extends StatelessWidget {
-  const AppLayoutWithBackButton({
-
+class AppLayoutWithoutAppBar extends StatelessWidget {
+  const AppLayoutWithoutAppBar({
     this.title,
     required this.body,
     this.centerTitle = false,
@@ -23,14 +21,13 @@ class AppLayoutWithBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = AppHelperFunctions.isDarkMode(context);
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: CustomAppBar(
         title: title,
-        showBackArrow: true,
+        showBackArrow: false,
+        showLeadingIcon: false,
         centerTitle: centerTitle,
-        //backgroundColor: backgroundColor ?? (isDark? AppColors.dark : AppColors.light),
         actions: action,
       ),
       body: Padding(padding: AppSpacingStyle.defaultSpacing, child: body),
