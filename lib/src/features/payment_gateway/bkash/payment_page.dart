@@ -4,84 +4,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bkash/flutter_bkash.dart';
 import 'package:get/get.dart';
 import 'package:torganic/src/features/bottom_navigation/bottom_navigation.dart';
+import 'package:torganic/src/features/payment_gateway/controllers/payment_controllers.dart';
+import 'package:torganic/src/utils/constants/image_strings.dart';
+import 'package:torganic/src/utils/helpers/helper_functions.dart';
+import 'package:torganic/src/utils/popups/full_screen_loader.dart';
 import 'widget/packageCard.dart';
 
-class Payment extends StatefulWidget {
-  Payment({Key? key}) : super(key: key);
-
-  @override
-  State<Payment> createState() => _PaymentState();
-}
-
-class _PaymentState extends State<Payment> {
-  bool isLoading = false;
-
-  Future<void> paymentCheckout(double amount) async {
-    // sandbox
-    final flutterBkash = FlutterBkash();
-
-    // production
-    // final flutterBkash = FlutterBkash(
-    //   bkashCredentials: BkashCredentials(
-    //     username: "app_username",
-    //     password: "app_password",
-    //     appKey: "app_key",
-    //     appSecret: "app_secret",
-    //     isSandbox: false,
-    //   ),
-    // );
-
-    /// Goto BkashPayment page & pass the params
-    try {
-      /// call pay method to pay without agreement as parameter pass the context, amount, merchantInvoiceNumber
-      final result = await flutterBkash.pay(
-        context: context,
-        // need the context as BuildContext
-        amount: amount,
-        // need it double type
-        merchantInvoiceNumber: "tranId",
-      );
-
-      /// if the payment is success then show the log
-      print(result.toString());
-
-      /// if the payment is success then show the snack-bar
-      _showSnackbar("(Success) tranId: ${result.trxId}");
-    } on BkashFailure catch (e, st) {
-      /// if something went wrong then show the log
-      print(e.message);
-      print(st);
-
-      /// if something went wrong then show the snack-bar
-      _showSnackbar(e.message);
-    } catch (e, st) {
-      /// if something went wrong then show the log
-      print(e);
-      print(st);
-
-      /// if something went wrong then show the snack-bar
-      _showSnackbar("Something went wrong");
-    }
-    setState(() {
-      isLoading = false;
-    });
-    return;
-  }
-
-  /// show snack-bar with message
-  void _showSnackbar(String message) => ScaffoldMessenger.of(context)
-    ..hideCurrentSnackBar()
-    ..showSnackBar(SnackBar(content: Text(message)));
+class Payment extends StatelessWidget {
+  const Payment({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(PaymentController());
     return Scaffold(
       appBar: AppBar(
         title: Text("Buy package"),
       ),
-      body: isLoading
-          ? Center(child: CircularProgressIndicator())
-          : ListView(
+      body: ListView(
         children: [
           Padding(
             padding: EdgeInsets.all(10),
@@ -98,10 +37,7 @@ class _PaymentState extends State<Payment> {
                   'এই পেকেজটি ক্রয় করলে আপনি ৩ মাসের জন্য আমাদের প্রিমিয়াম সার্ভিসগুলোর ভিডিও সেকশন এর অ্যাক্সেস পাবেন',
                   3,
                       () {
-                    setState(() {
-                      isLoading = false;
-                    });
-                    paymentCheckout(200);
+                    controller.paymentCheckout(200);
                   },
                 ),
                 packageCard(
@@ -111,10 +47,7 @@ class _PaymentState extends State<Payment> {
                   'এই পেকেজটি ক্রয় করলে আপনি ৯ মাসের জন্য আমাদের প্রিমিয়াম সার্ভিসগুলোর ভিডিও ও PDF সেকশন এর অ্যাক্সেস পাবেন',
                   9,
                       () {
-                    setState(() {
-                      isLoading = true;
-                    });
-                    paymentCheckout(700);
+                    controller.paymentCheckout(700);
                   },
                 ),
                 packageCard(
@@ -124,10 +57,7 @@ class _PaymentState extends State<Payment> {
                   'এই পেকেজটি ক্রয় করলে আপনি ২ বছরের জন্য আমাদের প্রিমিয়াম সকল সার্ভিস এর অ্যাক্সেস পাবেন',
                   24,
                       () {
-                    setState(() {
-                      isLoading = true;
-                    });
-                    paymentCheckout(1500);
+                    controller.paymentCheckout(1500);
                   },
                 ),
               ],
