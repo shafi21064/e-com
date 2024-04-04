@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
@@ -7,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 
 class StripeRepository extends GetxController {
+
 
   static const String baseUrl = "https://api.stripe.com/v1";
   static final String secretKey = dotenv.env["STRIPE_SECRET_KEY"]!;
@@ -65,6 +65,7 @@ class StripeRepository extends GetxController {
       rethrow;
     }
   }
+
 
   Future<void> onPaymentProceed () async{
     await initPaymentSheet();
