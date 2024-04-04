@@ -6,6 +6,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:torganic/src/app.dart';
 import 'package:torganic/src/utils/firebase/firebase_api.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'firebase_options.dart';
 import 'src/features/authentication/data/repositories/auth_repositories.dart';
 
@@ -13,13 +14,15 @@ Future<void> main() async {
   await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
 
+  await dotenv.load(fileName: ".env");
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   ).then((FirebaseApp value) => Get.put(AuthRepositories));
 
   await FirebaseApi().initNotifications();
-  Stripe.publishableKey =
-      "pk_test_51P1ip3P2j285qpY0QWFYsQJAG2AV51vaK43X3gFiAfWthlEsALRJS33aVZDZNOaS1hgMlBd20AG7ejNWqcPqvpW500bYRkMhG6";
+  Stripe.publishableKey = dotenv.env['STRIPE_PUBLISHABLE_KEY']!;
+  await Stripe.instance.applySettings();
 
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,

@@ -5,6 +5,7 @@ import 'package:flutter_bkash/flutter_bkash.dart';
 import 'package:get/get.dart';
 import 'package:torganic/src/features/bottom_navigation/bottom_navigation.dart';
 import 'package:torganic/src/features/payment_gateway/controllers/payment_controllers.dart';
+import 'package:torganic/src/features/payment_gateway/stripe/repository/stripe_repository.dart';
 import 'package:torganic/src/utils/constants/image_strings.dart';
 import 'package:torganic/src/utils/helpers/helper_functions.dart';
 import 'package:torganic/src/utils/popups/full_screen_loader.dart';
@@ -15,7 +16,8 @@ class Payment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(PaymentController());
+    // final controller = Get.put(PaymentController());
+     final controller = Get.put(StripeRepository());
     return Scaffold(
       appBar: AppBar(
         title: Text("Buy package"),
@@ -37,7 +39,7 @@ class Payment extends StatelessWidget {
                   'এই পেকেজটি ক্রয় করলে আপনি ৩ মাসের জন্য আমাদের প্রিমিয়াম সার্ভিসগুলোর ভিডিও সেকশন এর অ্যাক্সেস পাবেন',
                   3,
                       () {
-                    controller.paymentCheckout(200);
+                    controller.onPaymentProceed;
                   },
                 ),
                 packageCard(
@@ -47,7 +49,7 @@ class Payment extends StatelessWidget {
                   'এই পেকেজটি ক্রয় করলে আপনি ৯ মাসের জন্য আমাদের প্রিমিয়াম সার্ভিসগুলোর ভিডিও ও PDF সেকশন এর অ্যাক্সেস পাবেন',
                   9,
                       () {
-                    controller.paymentCheckout(700);
+                    controller.onPaymentProceed;
                   },
                 ),
                 packageCard(
@@ -57,7 +59,7 @@ class Payment extends StatelessWidget {
                   'এই পেকেজটি ক্রয় করলে আপনি ২ বছরের জন্য আমাদের প্রিমিয়াম সকল সার্ভিস এর অ্যাক্সেস পাবেন',
                   24,
                       () {
-                    controller.paymentCheckout(1500);
+
                   },
                 ),
               ],
