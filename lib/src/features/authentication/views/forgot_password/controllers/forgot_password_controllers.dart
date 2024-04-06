@@ -22,15 +22,14 @@ class ForgotPasswordController extends GetxController{
   Future<void> sendCode() async{
     final isConnected = await NetworkManager.instance.isConnected();
     try{
-      /// Start Loading
-      FullScreenLoader.openLoadingDialog('Processing', AppImages.loaderAnimation);
-
       ///Check Internet
       if(!isConnected) return;
 
       /// Validate Form
       if(!forgotEmailKey.currentState!.validate()) return;
 
+      /// Start Loading
+      FullScreenLoader.openLoadingDialog('Processing', AppImages.loading);
 
     }catch(e){
       /// Error

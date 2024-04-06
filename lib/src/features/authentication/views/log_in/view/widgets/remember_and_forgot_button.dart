@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:torganic/src/features/authentication/views/log_in/controllers/login_controller.dart';
-import 'package:torganic/src/utils/local_storage/local_storage_keys.dart';
-import 'package:torganic/src/utils/local_storage/storage_utility.dart';
 import '../../../../../../utils/constants/colors.dart';
 import '../../../../../../utils/helpers/helper_functions.dart';
 import '../../../forgot_password/view/forgot.dart';
+import '../../controllers/login_controller.dart';
 
 class RememberAndForgotButton extends StatelessWidget {
   const RememberAndForgotButton({

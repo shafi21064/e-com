@@ -7,6 +7,8 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:torganic/src/features/bottom_navigation/bottom_navigation.dart';
 import 'package:torganic/src/features/personalization/view/profile.dart';
 import 'package:torganic/src/features/video_player/view/video_player.dart';
+import '../main.dart';
+import 'features/notification_view/view/notiication.dart';
 import 'features/splash/view/splash_screen.dart';
 import './utils/theme/theme.dart';
 import './utils/constants/text_strings.dart';
@@ -37,7 +39,12 @@ class MyApp extends StatelessWidget {
             Locale('en'), // English
             Locale('es'), // Spanish
           ],
-        home: const SplashScreen()
+        home: const SplashScreen(),
+
+        navigatorKey: navigatorKey,
+        routes: {
+          "/notification_screen" : (context) => const NotificationPages(),
+        },
       ),
     );
   }

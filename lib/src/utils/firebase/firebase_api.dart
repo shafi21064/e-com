@@ -1,5 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 
+import '../../../main.dart';
+
 
 class FirebaseApi {
 
@@ -27,10 +29,10 @@ class FirebaseApi {
       return;
     }
 
-    // navigatorKey.currentState?.pushNamed(
-    //   "/notification_screen",
-    //   arguments: message
-    // );
+    navigatorKey.currentState?.pushNamed(
+      "/notification_screen",
+      arguments: message
+    );
   }
 
   Future initPushNotifications() async{

@@ -1,19 +1,36 @@
 
 class AppValidator {
+  static String? validateEmailOrPhone(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Email or phone is required.';
+    }
+
+    // Regular expression for email and phone validation
+    final emailRegExp = RegExp(r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$');
+    final phoneRegExp = RegExp(r'^(\+88|0088)?(01)[3456789](\d){8}$');
+
+    if ((phoneRegExp.hasMatch(value)) || emailRegExp.hasMatch(value)){
+      return null;
+    } else{
+      return 'Invalid email or phone';
+    }
+
+  }
+
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
-      return 'Email is required.';
+      return 'Email or phone is required.';
     }
 
     // Regular expression for email validation
-    final emailRegExp = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    final emailRegExp = RegExp(r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$');
 
-    if (!emailRegExp.hasMatch(value)) {
-      return 'Invalid email address.';
+    if (!emailRegExp.hasMatch(value)){
+      return 'Invalid email';
     }
-
     return null;
   }
+
 
   static String? validatePassword(String? value) {
     if (value == null || value.isEmpty) {
@@ -56,10 +73,10 @@ class AppValidator {
     }
 
     // Regular expression for phone number validation (assuming a 10-digit US phone number format)
-    final phoneRegExp = RegExp(r'^\d{10}$');
+    final phoneRegExp = RegExp(r'^(\+88|0088)?(01)[3456789](\d){8}$');
 
     if (!phoneRegExp.hasMatch(value)) {
-      return 'Invalid phone number format (10 digits required).';
+      return 'Invalid phone number';
     }
 
     return null;

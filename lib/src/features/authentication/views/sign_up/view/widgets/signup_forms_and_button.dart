@@ -26,8 +26,8 @@ class SignUpFormsAndButton extends StatelessWidget {
           AuthInputField(
             isDark: isDark,
             controller: signUpController.emailController,
-            validator: (value) => AppValidator.validateEmail(value),
-            hingText: AppLocalizations.of(context)!.emailHintText,
+            validator: (value) => AppValidator.validateEmailOrPhone(value),
+            hingText: AppLocalizations.of(context)!.emailOrPhoneHintText,
             obscured: false,
           ),
           const Gap(AppSizes.spaceBtwInputFields),

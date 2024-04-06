@@ -63,6 +63,8 @@ dependencies:
   # Payment Gateway
   flutter_bkash: ^0.2.0
   flutter_stripe: ^10.1.1
+  package_info_plus: ^6.0.0
+
 
 
 

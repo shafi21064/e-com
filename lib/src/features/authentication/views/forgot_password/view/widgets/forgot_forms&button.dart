@@ -27,9 +27,9 @@ class ForgotFormsAndButton extends StatelessWidget {
           AuthInputField(
             isDark: isDark,
             controller: forgotController.forgotPasswordEmail,
-            hingText: AppLocalizations.of(context)!.emailHintText,
+            hingText: AppLocalizations.of(context)!.emailOrPhoneHintText,
             obscured: false,
-            validator: (value)=> AppValidator.validateEmail(value),
+            validator: (value)=> AppValidator.validateEmailOrPhone(value),
           ),
 
           const Gap(AppSizes.spaceBtwSections),

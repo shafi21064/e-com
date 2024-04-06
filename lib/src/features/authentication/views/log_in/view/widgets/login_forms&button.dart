@@ -4,6 +4,10 @@ import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/state_manager.dart';
+import 'package:torganic/src/features/authentication/views/forgot_password/controllers/forgot_password_controllers.dart';
+import 'package:torganic/src/features/authentication/views/forgot_password/view/otp.dart';
 import 'package:torganic/src/features/authentication/views/log_in/controllers/login_controller.dart';
 import '../../../../../../common/widgets/buttons/app_buttons.dart';
 import '../../../../../../utils/constants/sizes.dart';
@@ -30,42 +34,54 @@ class LogInFormsAndButton extends StatelessWidget {
           AuthInputField(
             isDark: isDark,
             controller: loginController.emailController,
-            validator: (value) => AppValidator.validateEmail(value),
-            hingText: AppLocalizations.of(context)!.emailHintText,
+            validator: (value) => AppValidator.validateEmailOrPhone(value),
+            hingText: AppLocalizations.of(context)!.emailOrPhoneHintText,
             obscured: false,
           ),
           const Gap(AppSizes.spaceBtwInputFields),
           Obx(
-            () => AuthInputField(
-              isDark: isDark,
-              controller: loginController.passwordController,
-              validator: (value) => AppValidator.validatePassword(value),
-              hingText: AppLocalizations.of(context)!.passwordHintText,
-              suffixIcon: InkWell(
-                onTap: () {
-                  loginController.passwordObscured.value =
-                      !loginController.passwordObscured.value;
-                },
-                child: Icon(loginController.passwordObscured.value
-                    ? Icons.remove_red_eye
-                    : Icons.remove_red_eye_outlined),
+            () => Visibility(
+              visible: loginController.loginWithPassword.value,
+              child: AuthInputField(
+                isDark: isDark,
+                controller: loginController.passwordController,
+                validator: (value) => AppValidator.validatePassword(value),
+                hingText: AppLocalizations.of(context)!.passwordHintText,
+                suffixIcon: InkWell(
+                  onTap: () {
+                    loginController.passwordObscured.value =
+                        !loginController.passwordObscured.value;
+                  },
+                  child: Icon(loginController.passwordObscured.value
+                      ? Icons.remove_red_eye
+                      : Icons.remove_red_eye_outlined),
+                ),
+                obscured: loginController.passwordObscured.value,
               ),
-              obscured: loginController.passwordObscured.value,
             ),
           ),
           const RememberAndForgotButton(),
           const Gap(AppSizes.spaceBtwSections),
-          AppButtons.largeFlatFilledButton(
-              onPressed: () {
-                loginController.emailPasswordLogIn();
-              },
-              buttonText: AppLocalizations.of(context)!.login),
+          Obx(
+            () => AppButtons.largeFlatFilledButton(
+                onPressed: () => loginController.loginWithPassword.value
+                    ? loginController.emailPasswordLogIn()
+                    : loginController.sendCode(),
+                buttonText: loginController.loginWithPassword.value
+                    ? AppLocalizations.of(context)!.login
+                    : AppLocalizations.of(context)!.sendOtp),
+          ),
           const Gap(AppSizes.spaceBtwItems),
-          AppButtons.largeFlatOutlineButton(
-              onPressed: () {
-                Get.to(const SignUp());
-              },
-              buttonText: AppLocalizations.of(context)!.createAccount)
+          Obx(
+            () => AppButtons.largeFlatOutlineButton(
+                onPressed: () {
+                  loginController.loginWithPassword.value =
+                      !loginController.loginWithPassword.value;
+                },
+                buttonText: loginController.loginWithPassword.value
+                    ? AppLocalizations.of(context)!.loginWithOtp
+                    : AppLocalizations.of(context)!.loginWithPassword),
+          )
         ],
       ),
     );

@@ -12,6 +12,7 @@ import 'package:torganic/src/utils/local_storage/local_storage_keys.dart';
 import 'package:torganic/src/utils/local_storage/storage_utility.dart';
 import 'package:torganic/src/utils/popups/loaders.dart';
 import '../../../../../utils/popups/full_screen_loader.dart';
+import '../../forgot_password/view/otp.dart';
 
 class LogInPageController extends GetxController {
   static LogInPageController get instance => Get.find();
@@ -25,8 +26,10 @@ class LogInPageController extends GetxController {
   final authController = Get.put(AuthRepositories());
 
   /// variables
+  Rx<bool> loginWithPassword = false.obs;
   Rx<bool> passwordObscured = true.obs;
   Rx<bool> rememberMe = false.obs;
+
 
   Future<void> emailPasswordLogIn() async {
     final isConnected = await NetworkManager.instance.isConnected();
@@ -85,6 +88,29 @@ class LogInPageController extends GetxController {
       FullScreenLoader.stopLoading();
       debugPrint(e.toString());
       AppLoaders.errorSnackBar(title: 'oh Snap..', message: e.toString());
+    }
+  }
+
+  Future<void> sendCode() async{
+    final isConnected = await NetworkManager.instance.isConnected();
+    try{
+      ///Check Internet
+      if(!isConnected) return;
+
+      /// Validate Form
+      if(!logInFormKey.currentState!.validate()) return;
+
+      /// Start Loading
+      FullScreenLoader.openLoadingDialog('Processing', AppImages.loading);
+
+    }catch(e){
+      /// Error
+      AppLoaders.errorSnackBar(title: 'oh, Snap', message: e.toString());
+    }finally{
+      FullScreenLoader.stopLoading();
+      if(logInFormKey.currentState!.validate()){
+        Get.to(const Otp());
+      }
     }
   }
 }
