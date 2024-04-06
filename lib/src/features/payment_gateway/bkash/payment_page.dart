@@ -39,7 +39,7 @@ class Payment extends StatelessWidget {
                   'এই পেকেজটি ক্রয় করলে আপনি ৩ মাসের জন্য আমাদের প্রিমিয়াম সার্ভিসগুলোর ভিডিও সেকশন এর অ্যাক্সেস পাবেন',
                   3,
                       () {
-                    //controller.paymentCheckoutWithSSL();
+                    controller.paymentCheckoutWithSSL();
                   },
                 ),
                 packageCard(

@@ -16,7 +16,8 @@ class SplashController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    appStatus();
+   // appStatus();
+    changeScreen();
   }
 
   Future<void> appStatus()async{
@@ -67,9 +68,6 @@ class SplashController extends GetxController {
     final isNotFirst =
         AppLocalStorage().readData(LocalStorageKeys.isNotFirstTime) ?? false;
     Future.delayed(const Duration(seconds: 3), () {
-      print('value $isNotFirst');
-      print('value $isRememberMe');
-      print('value $isGoogleLogin');
       isNotFirst == true
           ? (isRememberMe || isGoogleLogin
               ? Get.offAll(() => const BottomNavigation())

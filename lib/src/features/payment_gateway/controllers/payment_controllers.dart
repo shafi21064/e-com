@@ -1,5 +1,12 @@
 
+import 'package:flutter/material.dart';
 import 'package:flutter_bkash/flutter_bkash.dart';
+import 'package:flutter_sslcommerz/model/SSLCSdkType.dart';
+import 'package:flutter_sslcommerz/model/SSLCTransactionInfoModel.dart';
+import 'package:flutter_sslcommerz/model/SSLCommerzInitialization.dart';
+import 'package:flutter_sslcommerz/model/SSLCurrencyType.dart';
+import 'package:flutter_sslcommerz/sslcommerz.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:torganic/src/utils/helpers/helper_functions.dart';
 import '../../../utils/constants/image_strings.dart';
@@ -61,57 +68,57 @@ class PaymentController extends GetxController{
   }
 
   /// SSl Payment
-  // Future<void> paymentCheckoutWithSSL() async {
-  //   Sslcommerz sslcommerz = Sslcommerz(
-  //     initializer: SSLCommerzInitialization(
-  //       //Use the ipn if you have valid one, or it will fail the transaction.
-  //       //ipn_url: "www.ipnurl.com",
-  //       //multi_card_name: formData['multicard'],
-  //       currency: SSLCurrencyType.BDT,
-  //       product_category: "Food",
-  //       sdkType: SSLCSdkType.TESTBOX,
-  //       store_id: "mobil5fe45035efe16",
-  //       store_passwd: "mobil5fe45035efe16@ssl",
-  //       total_amount: 100.00,
-  //       tran_id: "1231123131212",
-  //     ),
-  //   );
-  //   try {
-  //     SSLCTransactionInfoModel result = await sslcommerz.payNow();
-  //
-  //     if (result.status!.toLowerCase() == "failed") {
-  //       Fluttertoast.showToast(
-  //         msg: "Transaction is Failed....",
-  //         toastLength: Toast.LENGTH_SHORT,
-  //         gravity: ToastGravity.CENTER,
-  //         timeInSecForIosWeb: 1,
-  //         backgroundColor: Colors.red,
-  //         textColor: Colors.white,
-  //         fontSize: 16.0,
-  //       );
-  //     } else if (result.status!.toLowerCase() == "closed") {
-  //       Fluttertoast.showToast(
-  //         msg: "SDK Closed by User",
-  //         toastLength: Toast.LENGTH_SHORT,
-  //         gravity: ToastGravity.CENTER,
-  //         timeInSecForIosWeb: 1,
-  //         backgroundColor: Colors.red,
-  //         textColor: Colors.white,
-  //         fontSize: 16.0,
-  //       );
-  //     } else {
-  //       Fluttertoast.showToast(
-  //           msg:
-  //           "Transaction is ${result.status} and Amount is ${result.amount}",
-  //           toastLength: Toast.LENGTH_SHORT,
-  //           gravity: ToastGravity.CENTER,
-  //           timeInSecForIosWeb: 1,
-  //           backgroundColor: Colors.black,
-  //           textColor: Colors.white,
-  //           fontSize: 16.0);
-  //     }
-  //   } catch (e) {
-  //     debugPrint(e.toString());
-  //   }
-  // }
+  Future<void> paymentCheckoutWithSSL() async {
+    Sslcommerz sslcommerz = Sslcommerz(
+      initializer: SSLCommerzInitialization(
+        //Use the ipn if you have valid one, or it will fail the transaction.
+        //ipn_url: "www.ipnurl.com",
+        //multi_card_name: formData['multicard'],
+        currency: SSLCurrencyType.BDT,
+        product_category: "Food",
+        sdkType: SSLCSdkType.TESTBOX,
+        store_id: "mobil5fe45035efe16",
+        store_passwd: "mobil5fe45035efe16@ssl",
+        total_amount: 100.00,
+        tran_id: "1231123131212",
+      ),
+    );
+    try {
+      SSLCTransactionInfoModel result = await sslcommerz.payNow();
+
+      if (result.status!.toLowerCase() == "failed") {
+        Fluttertoast.showToast(
+          msg: "Transaction is Failed....",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
+      } else if (result.status!.toLowerCase() == "closed") {
+        Fluttertoast.showToast(
+          msg: "SDK Closed by User",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
+      } else {
+        Fluttertoast.showToast(
+            msg:
+            "Transaction is ${result.status} and Amount is ${result.amount}",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.black,
+            textColor: Colors.white,
+            fontSize: 16.0);
+      }
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
 }
