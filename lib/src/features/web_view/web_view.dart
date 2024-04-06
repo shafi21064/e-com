@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../../common/layouts/layout_with_back_button/layout_with_back_button.dart';
+
 class WebViewScreen extends StatefulWidget {
   String url;
 
@@ -34,7 +36,7 @@ class _WebViewScreenState extends State<WebViewScreen> {
       )
       ..loadRequest(Uri.parse(widget.url));
 
-    return Scaffold(
+    return AppLayoutWithBackButton(
         body: SafeArea(
             child: WebViewWidget(
       controller: controllers,

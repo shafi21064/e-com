@@ -16,7 +16,7 @@ class SplashController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-   // appStatus();
+    //appStatus();
     changeScreen();
   }
 
@@ -34,9 +34,9 @@ class SplashController extends GetxController {
           builder: (context) {
             return AlertDialog(
               // backgroundColor: Colors.pink[100],
-              icon: const Icon(Icons.info),
+              icon: const Icon(Icons.update),
               title: const Text('Update here'),
-              //content: const Text('Are you sure you want to Log out?'),
+              content: const Text('New version is available. Please update your app.'),
               actions: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
