@@ -17,7 +17,6 @@ class Payment extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
      final controller = Get.put(PaymentController());
-     // final controller = Get.put(StripeRepository());
     return Scaffold(
       appBar: AppBar(
         title: Text("Buy package"),
@@ -59,7 +58,7 @@ class Payment extends StatelessWidget {
                   'এই পেকেজটি ক্রয় করলে আপনি ২ বছরের জন্য আমাদের প্রিমিয়াম সকল সার্ভিস এর অ্যাক্সেস পাবেন',
                   24,
                       () {
-
+                    controller.paymentCheckoutWithStripe();
                   },
                 ),
               ],

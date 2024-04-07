@@ -6,14 +6,18 @@ import 'package:flutter_sslcommerz/model/SSLCTransactionInfoModel.dart';
 import 'package:flutter_sslcommerz/model/SSLCommerzInitialization.dart';
 import 'package:flutter_sslcommerz/model/SSLCurrencyType.dart';
 import 'package:flutter_sslcommerz/sslcommerz.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
+import 'package:torganic/src/features/payment_gateway/stripe/repository/stripe_repository.dart';
 import 'package:torganic/src/utils/helpers/helper_functions.dart';
 import '../../../utils/constants/image_strings.dart';
 import '../../../utils/popups/full_screen_loader.dart';
 
 class PaymentController extends GetxController{
   static PaymentController get instance => Get.find();
+
+  final stripePaymentRepo = Get.put(StripeRepository());
 
 
   /// Bkash Payment
@@ -119,6 +123,23 @@ class PaymentController extends GetxController{
       }
     } catch (e) {
       debugPrint(e.toString());
+    }
+  }
+
+  Future<void> paymentCheckoutWithStripe () async{
+    FullScreenLoader.openLoadingDialog('Processing', AppImages.searching);
+    await stripePaymentRepo.initPaymentSheet();
+    FullScreenLoader.stopLoading();
+
+    try{
+      await Stripe.instance.presentPaymentSheet();
+      ScaffoldMessenger.of(Get.overlayContext!).showSnackBar(
+        const SnackBar(content: Text('Successfully paid')),
+      );
+    }catch(e){
+      ScaffoldMessenger.of(Get.overlayContext!).showSnackBar(
+        const SnackBar(content: Text('Payment Failed')),
+      );
     }
   }
 }

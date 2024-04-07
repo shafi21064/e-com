@@ -6,7 +6,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:torganic/src/app.dart';
-import 'package:torganic/src/utils/firebase/firebase_api.dart';
+import 'package:torganic/src/utils/firebase/push_notification.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'firebase_options.dart';
@@ -65,7 +65,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   ).then((FirebaseApp value) => Get.put(AuthRepositories));
 
-  await FirebaseApi().initNotifications();
+  await PushNotificationService().initNotifications();
 
 
 

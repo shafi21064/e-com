@@ -66,19 +66,4 @@ class StripeRepository extends GetxController {
     }
   }
 
-
-  Future<void> onPaymentProceed () async{
-    await initPaymentSheet();
-
-    try{
-      await Stripe.instance.presentPaymentSheet();
-      ScaffoldMessenger.of(Get.overlayContext!).showSnackBar(
-        const SnackBar(content: Text('Successfully paid')),
-      );
-    }catch(e){
-      ScaffoldMessenger.of(Get.overlayContext!).showSnackBar(
-         const SnackBar(content: Text('Payment Failed')),
-      );
-    }
-  }
 }

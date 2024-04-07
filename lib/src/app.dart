@@ -6,11 +6,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:upgrader/upgrader.dart';
 import '../main.dart';
-import 'features/notification_view/view/notiication.dart';
+import 'features/notification_view/view/notification.dart';
 import 'features/splash/view/splash_screen.dart';
 import './utils/theme/theme.dart';
 import './utils/constants/text_strings.dart';
-import 'common/bindings/general_bingdings.dart';
+import 'common/bindings/general_bindings.dart';
 
 
 

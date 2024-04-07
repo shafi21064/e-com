@@ -4,7 +4,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import '../../../main.dart';
 
 
-class FirebaseApi {
+class PushNotificationService {
 
   FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
 
