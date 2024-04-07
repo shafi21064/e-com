@@ -1,7 +1,7 @@
 import 'package:appinio_video_player/appinio_video_player.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:torganic/src/common/layouts/layout_with_back_button/layout_with_back_button.dart';
+
 
 class VideoApp extends StatefulWidget {
   const VideoApp({super.key});
