@@ -9,7 +9,7 @@ class ShimmerHelper {
       {double height = double.infinity, double width = double.infinity}) {
     return Shimmer.fromColors(
       baseColor: AppColors.grey,
-      highlightColor: AppColors.grey,
+      highlightColor: AppColors.lightGrey.withOpacity(.5),
       child: Container(
         height: height,
         width: width,
@@ -92,12 +92,12 @@ class ShimmerHelper {
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: Shimmer.fromColors(
-            baseColor: AppColors.grey,
-            highlightColor: AppColors.grey,
+            baseColor: AppColors.primary.withOpacity(0.04),
+            highlightColor: AppColors.primary.withOpacity(0.08),
             child: Container(
               height: 120,
               width: double.infinity,
-              color: Colors.white,
+              color: AppColors.primary,
             ),
           ),
         );
@@ -153,7 +153,7 @@ class ShimmerHelper {
           padding: const EdgeInsets.all(8.0),
           child: Shimmer.fromColors(
             baseColor: AppColors.grey,
-            highlightColor: AppColors.grey,
+            highlightColor: AppColors.lightGrey,
             child: Container(
               height: 120,
               width: double.infinity,

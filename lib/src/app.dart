@@ -4,10 +4,6 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:loader_overlay/loader_overlay.dart';
-import 'package:torganic/src/features/bottom_navigation/bottom_navigation.dart';
-import 'package:torganic/src/features/personalization/view/profile.dart';
-import 'package:torganic/src/features/video_player/view/video_player.dart';
-import 'package:torganic/src/utils/device/device_utility.dart';
 import 'package:upgrader/upgrader.dart';
 import '../main.dart';
 import 'features/notification_view/view/notiication.dart';
@@ -15,7 +11,7 @@ import 'features/splash/view/splash_screen.dart';
 import './utils/theme/theme.dart';
 import './utils/constants/text_strings.dart';
 import 'common/bindings/general_bingdings.dart';
-import 'features/test/badge_dynamic.dart';
+
 
 
 class MyApp extends StatelessWidget {

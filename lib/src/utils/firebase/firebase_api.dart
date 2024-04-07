@@ -1,3 +1,4 @@
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 
 import '../../../main.dart';
@@ -13,7 +14,10 @@ class FirebaseApi {
       alert: true,
       sound: true,
       announcement: true,
-      badge: true
+      badge: true,
+      carPlay: true,
+      criticalAlert: true,
+      provisional: true
     );
 
     final fCMToken = await _firebaseMessaging.getToken();
@@ -40,6 +44,8 @@ class FirebaseApi {
     FirebaseMessaging.instance.getInitialMessage().then(handelMessage);
 
     FirebaseMessaging.onMessageOpenedApp.listen(handelMessage);
+    
+
 
   }
 
