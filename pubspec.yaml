@@ -71,6 +71,8 @@ dependencies:
   flutter_bkash: ^0.2.0
   flutter_stripe: ^10.1.1
   flutter_sslcommerz: ^2.2.2-nullsafety.0
+  printing: ^5.12.0
+  open_file: ^3.3.2
 
 
 
@@ -101,6 +103,7 @@ flutter:
     - assets/images/animations/
     - assets/images/banners/
     - assets/images/on_boarding_images/
+    - assets/images/pdf_a/
     - .env
 
 
