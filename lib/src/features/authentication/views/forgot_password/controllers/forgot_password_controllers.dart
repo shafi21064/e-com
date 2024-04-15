@@ -35,9 +35,10 @@ class ForgotPasswordController extends GetxController{
       /// Error
       AppLoaders.errorSnackBar(title: 'oh, Snap', message: e.toString());
     }finally{
-      FullScreenLoader.stopLoading();
       if(forgotEmailKey.currentState!.validate()){
-        Get.to(const Otp());
+        FullScreenLoader.stopLoading();
+        Get.to(()=> const Otp());
+
       }
     }
   }

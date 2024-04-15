@@ -13,7 +13,7 @@ class AppDrawer extends StatelessWidget {
   const AppDrawer({required this.userName, required this.email, super.key});
 
   void _showDialog() {
-    final controller = Get.put(AuthRepositories());
+    //final controller = Get.put(AuthRepositories());
     showDialog(
         context: Get.overlayContext!,
         builder: (context) {
@@ -27,7 +27,7 @@ class AppDrawer extends StatelessWidget {
                 children: [
                   CupertinoButton(
                       onPressed: () async {
-                        controller.logout();
+                        //controller.logout();
                       },
                       child: Text(
                         AppLocalizations.of(context)!.yes,

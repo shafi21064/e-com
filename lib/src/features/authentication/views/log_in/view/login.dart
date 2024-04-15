@@ -30,7 +30,7 @@ class LogIn extends StatelessWidget {
             OtherLogInOrSignUpOption(
               title: AppLocalizations.of(context)!.orLogInWith,
               googleTap: () {
-                logInController.googleSignIn();
+                logInController.onPressedGoogleLogin();
               },
               facebookTap: () {},
             ),

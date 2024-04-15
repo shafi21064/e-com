@@ -53,7 +53,7 @@ List<Widget> _buildScreens() {
     const HomeThree(),
     const Cart(),
     const GraphScreen(),
-    const Profile()
+    //const Profile()
   ];
 }
 
@@ -77,11 +77,11 @@ List<PersistentBottomNavBarItem> _navBarsItems() {
       activeColorPrimary: CupertinoColors.activeBlue,
       inactiveColorPrimary: CupertinoColors.systemGrey,
     ),
-    PersistentBottomNavBarItem(
-      icon: const Icon(CupertinoIcons.profile_circled),
-      title: ("Profile"),
-      activeColorPrimary: CupertinoColors.activeBlue,
-      inactiveColorPrimary: CupertinoColors.systemGrey,
-    ),
+    // PersistentBottomNavBarItem(
+    //   icon: const Icon(CupertinoIcons.profile_circled),
+    //   title: ("Profile"),
+    //   activeColorPrimary: CupertinoColors.activeBlue,
+    //   inactiveColorPrimary: CupertinoColors.systemGrey,
+    // ),
   ];
 }

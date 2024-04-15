@@ -63,7 +63,7 @@ Future<void> main() async {
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
-  ).then((FirebaseApp value) => Get.put(AuthRepositories));
+  );
 
   await PushNotificationService().initNotifications();
 

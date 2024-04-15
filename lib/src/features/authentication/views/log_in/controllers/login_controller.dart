@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:torganic/src/features/authentication/data/repositories/auth_repositories.dart';
@@ -13,17 +14,18 @@ import 'package:torganic/src/utils/local_storage/storage_utility.dart';
 import 'package:torganic/src/utils/popups/loaders.dart';
 import '../../../../../utils/popups/full_screen_loader.dart';
 import '../../forgot_password/view/otp.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LogInPageController extends GetxController {
   static LogInPageController get instance => Get.find();
 
-  final userController = Get.put(UserController());
+  //final userController = Get.put(UserController());
 
   ///Controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   GlobalKey<FormState> logInFormKey = GlobalKey<FormState>();
-  final authController = Get.put(AuthRepositories());
+  //final authController = Get.put(AuthRepositories());
 
   /// variables
   Rx<bool> loginWithPassword = false.obs;
@@ -57,39 +59,77 @@ class LogInPageController extends GetxController {
     }
   }
 
-  Future<void> googleSignIn() async {
-    final isConnected = await NetworkManager.instance.isConnected();
+  /// Google SignIn with Api
+  Future <UserCredential?> onPressedGoogleLogin() async {
     try {
-      FullScreenLoader.openLoadingDialog(
-          AppLocalizations.of(Get.overlayContext!)!.singingIn,
-          AppImages.loading);
+      FullScreenLoader.openLoadingDialog("Processing", AppImages.loading);
 
-      if (!isConnected) {
-        FullScreenLoader.stopLoading();
-        return;
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+
+      // final credential = GoogleAuthProvider.credential(
+      //   accessToken: googleAuth?.accessToken,
+      //   idToken: googleAuth?.idToken,
+      // );
+
+      var loginResponse = await AuthRepository().getSocialLoginResponse(
+          "google", googleUser?.displayName, googleUser?.email, googleUser?.id,
+          accessToken: googleAuth?.accessToken);
+
+      if (loginResponse.result == false) {
+       AppHelperFunctions.showSnackBar('${loginResponse.message}');
+      } else {
+        AppHelperFunctions.showSnackBar('${loginResponse.message}');
+         AppLocalStorage().saveDataIfNull(LocalStorageKeys.isGoogleLogIn, true);
+
+        //AuthHelper().setUserData(loginResponse);
+        Get.offAll(()=> const BottomNavigation());
       }
+      GoogleSignIn().disconnect();
 
-      /// Google sign in
-      final userCredential = await authController.signInWithGoogle();
-
-      /// Save user record
-      await userController.saveUserData(userCredential);
-
-      /// Stop Loading
-      FullScreenLoader.stopLoading();
-
-      Get.offAll(const BottomNavigation());
-      AppHelperFunctions.getSnackBar(
-          title: AppLocalizations.of(Get.overlayContext!)!.loggedIn,
-          backgroundColor: AppColors.primary);
-
-      AppLocalStorage().saveData(LocalStorageKeys.isGoogleLogIn, true);
-    } catch (e) {
-      FullScreenLoader.stopLoading();
-      debugPrint(e.toString());
-      AppLoaders.errorSnackBar(title: 'oh Snap..', message: e.toString());
+    } on Exception catch (e) {
+      AppHelperFunctions.showSnackBar(e.toString());
+      print("error is ....... $e");
+      // TODO
     }
+    return null;
+
   }
+
+  // Future<void> googleSignIn() async {
+  //   final isConnected = await NetworkManager.instance.isConnected();
+  //   try {
+  //     FullScreenLoader.openLoadingDialog(
+  //         AppLocalizations.of(Get.overlayContext!)!.singingIn,
+  //         AppImages.loading);
+  //
+  //     if (!isConnected) {
+  //       FullScreenLoader.stopLoading();
+  //       return;
+  //     }
+  //
+  //     /// Google sign in
+  //     final userCredential = await authController.signInWithGoogle();
+  //
+  //     /// Save user record
+  //     await userController.saveUserData(userCredential);
+  //
+  //     /// Stop Loading
+  //     FullScreenLoader.stopLoading();
+  //
+  //     Get.offAll(const BottomNavigation());
+  //     AppHelperFunctions.getSnackBar(
+  //         title: AppLocalizations.of(Get.overlayContext!)!.loggedIn,
+  //         backgroundColor: AppColors.primary);
+  //
+  //     AppLocalStorage().saveData(LocalStorageKeys.isGoogleLogIn, true);
+  //   } catch (e) {
+  //     FullScreenLoader.stopLoading();
+  //     debugPrint(e.toString());
+  //     AppLoaders.errorSnackBar(title: 'oh Snap..', message: e.toString());
+  //   }
+  // }
 
   Future<void> sendCode() async{
     final isConnected = await NetworkManager.instance.isConnected();
@@ -107,7 +147,6 @@ class LogInPageController extends GetxController {
       /// Error
       AppLoaders.errorSnackBar(title: 'oh, Snap', message: e.toString());
     }finally{
-      FullScreenLoader.stopLoading();
       if(logInFormKey.currentState!.validate()){
         Get.to(const Otp());
       }
