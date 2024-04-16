@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:torganic/src/utils/constants/colors.dart';
-import 'package:torganic/src/utils/constants/sizes.dart';
-import 'package:torganic/src/utils/device/device_utility.dart';
-import 'package:torganic/src/utils/helpers/helper_functions.dart';
+import '../../../utils/device/device_utility.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar(
