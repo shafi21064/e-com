@@ -5,8 +5,9 @@ import '../../utils/constants/colors.dart';
 
 
 class ShimmerHelper {
+
   buildBasicShimmer(
-      {double height = double.infinity, double width = double.infinity}) {
+      {double height = double.infinity, double width = double.infinity, required isDark}) {
     return Shimmer.fromColors(
       baseColor: AppColors.grey,
       highlightColor: AppColors.lightGrey.withOpacity(.5),
@@ -19,7 +20,7 @@ class ShimmerHelper {
   }
 
   buildAddressLoadingShimmer(
-      {double height = double.infinity, double width = double.infinity}) {
+      {double height = double.infinity, double width = double.infinity, required isDark}) {
     return Shimmer.fromColors(
       baseColor: AppColors.white,
       highlightColor: AppColors.white,
@@ -31,7 +32,7 @@ class ShimmerHelper {
     );
   }
 
-  buildListShimmer({itemCount = 10, itemHeight = 100.0}) {
+  buildListShimmer({itemCount = 10, itemHeight = 100.0, required isDark}) {
     return ListView.builder(
       itemCount: itemCount,
       scrollDirection: Axis.vertical,
@@ -41,13 +42,13 @@ class ShimmerHelper {
         return Padding(
           padding: const EdgeInsets.only(
               top: 0.0, left: 16.0, right: 16.0, bottom: 16.0),
-          child: ShimmerHelper().buildBasicShimmer(height: itemHeight),
+          child: ShimmerHelper().buildBasicShimmer(height: itemHeight, isDark: isDark),
         );
       },
     );
   }
 
-  buildProductGridShimmer({sController, itemCount = 10}) {
+  buildProductGridShimmer({sController, itemCount = 10, required isDark}) {
     return GridView.builder(
       itemCount: itemCount,
       controller: sController,
@@ -76,7 +77,7 @@ class ShimmerHelper {
     );
   }
 
-  buildHomeProductGridShimmer({sController, itemCount = 10}) {
+  buildHomeProductGridShimmer({sController, itemCount = 10, required isDark}) {
     return GridView.builder(
       itemCount: itemCount,
       controller: sController,
@@ -135,7 +136,7 @@ class ShimmerHelper {
   //   );
   // }
 
-  buildSquareGridShimmer({sController, itemCount = 10}) {
+  buildSquareGridShimmer({sController, itemCount = 10, required isDark}) {
     return GridView.builder(
       itemCount: itemCount,
       controller: sController,
@@ -152,12 +153,12 @@ class ShimmerHelper {
         return Padding(
           padding: const EdgeInsets.all(8.0),
           child: Shimmer.fromColors(
-            baseColor: AppColors.grey,
-            highlightColor: AppColors.lightGrey,
+            baseColor: isDark? AppColors.dark : AppColors.grey,
+            highlightColor: isDark? AppColors.darkGrey : AppColors.lightGrey,
             child: Container(
               height: 120,
               width: double.infinity,
-              color: Colors.white,
+              color: isDark? AppColors.dark : AppColors.light,
             ),
           ),
         );

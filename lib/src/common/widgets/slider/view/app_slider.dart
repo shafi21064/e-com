@@ -17,7 +17,7 @@ class CustomSlider extends StatelessWidget {
     super.key,
   });
 
-  final List<Widget> items;
+  final List<String> items;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,8 @@ class CustomSlider extends StatelessWidget {
       //crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         CarouselSlider(
-            items: items,
+             //items: items,
+            items: items.map((url) => AppBannerImage(imgUrl: url)).toList(),
             options: CarouselOptions(
                 viewportFraction: 1,
                 onPageChanged: (index, _) =>

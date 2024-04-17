@@ -8,4 +8,6 @@ class HomeController extends GetxController{
   final GlobalKey<ScaffoldState> homeKey = GlobalKey<ScaffoldState>();
   final GlobalKey<ScaffoldState> homeTwoKey = GlobalKey<ScaffoldState>();
 
+  final carousalCurrentIndex = 0.obs;
+
 }

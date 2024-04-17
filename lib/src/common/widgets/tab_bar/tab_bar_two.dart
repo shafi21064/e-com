@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import 'tab_controller.dart';
 
 
-class AppTabBar extends StatelessWidget {
-  const AppTabBar({super.key});
+class AppTabBarTwo extends StatelessWidget {
+  const AppTabBarTwo({super.key});
 
   @override
   Widget build(BuildContext context) {

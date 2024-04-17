@@ -10,11 +10,12 @@ class AppSearchBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = AppHelperFunctions.isDarkMode(context);
     return Container(
       padding: const EdgeInsets.all(AppSizes.md),
       width: AppHelperFunctions.screenWidth(),
       decoration: BoxDecoration(
-        color: AppColors.primaryBackground,
+        color: isDark? AppColors.black : AppColors.primaryBackground,
         borderRadius: BorderRadius.circular(AppSizes.cardRadiusLg),
         border: Border.all(color: AppColors.grey)
       ),
