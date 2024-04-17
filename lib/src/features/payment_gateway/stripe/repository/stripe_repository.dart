@@ -4,6 +4,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
+import 'package:torganic/src/utils/popups/full_screen_loader.dart';
 
 class StripeRepository extends GetxController {
 
@@ -16,7 +17,7 @@ class StripeRepository extends GetxController {
     const String url = '$baseUrl/payment_intents';
 
     final body = {
-      'amount': 200.toString(),
+      'amount': (200 * 100).toString(),
       'currency': 'usd'.toLowerCase(),
       'automatic_payment_methods[enabled]': 'true'
     };
@@ -59,6 +60,7 @@ class StripeRepository extends GetxController {
         ),
       );
     } catch (e) {
+      FullScreenLoader.stopLoading();
       ScaffoldMessenger.of(Get.overlayContext!).showSnackBar(
         SnackBar(content: Text('Error: $e')),
       );

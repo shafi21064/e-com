@@ -22,28 +22,22 @@ class HomeThree extends StatelessWidget {
     final controller = Get.put(HomeController());
     final isDark = AppHelperFunctions.isDarkMode(context);
     return AppLayoutWithDrawer(
-      globalKey: controller.homeKey,
-      title: const Text('Home'),
-      body: ListView(
-        children: [
-          const AppSearchBar(),
-          const Gap(AppSizes.spaceBtwItems),
-          const CustomSlider(
-            items: [
-              AppImages.banner1, AppImages.banner2, AppImages.banner3,
-          //   AppBannerImage(
-          //       imgUrl: AppImages.banner1),
-          //   AppBannerImage(
-          //       imgUrl: AppImages.banner2),
-          //   AppBannerImage(
-          //       imgUrl: AppImages.banner3),
+        globalKey: controller.homeKey,
+        title: const Text('Home'),
+        body: ListView(
+          children: [
+            const AppSearchBar(),
+            const Gap(AppSizes.spaceBtwItems),
+            const CustomSlider(
+              items: [
+                AppImages.banner1,
+                AppImages.banner2,
+                AppImages.banner3,
+              ],
+            ),
+            const Gap(AppSizes.spaceBtwSections),
+            ShimmerHelper().buildSquareGridShimmer(isDark: isDark)
           ],
-          ),
-          const Gap(AppSizes.spaceBtwSections),
-          ShimmerHelper().buildSquareGridShimmer(isDark: isDark)
-        ],
-      )
-    );
+        ));
   }
 }
-

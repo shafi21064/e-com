@@ -10,6 +10,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:torganic/src/features/payment_gateway/stripe/repository/stripe_repository.dart';
+import 'package:torganic/src/utils/constants/colors.dart';
 import 'package:torganic/src/utils/helpers/helper_functions.dart';
 import '../../../utils/constants/image_strings.dart';
 import '../../../utils/popups/full_screen_loader.dart';
@@ -52,20 +53,20 @@ class PaymentController extends GetxController{
       print(result.toString());
 
       // if the payment is success then show the snack-bar
-      AppHelperFunctions.showSnackBar("(Success) tranId: ${result.trxId}");
+      AppHelperFunctions.showSimpleSnackBar("(Success) tranId: ${result.trxId}");
     } on BkashFailure catch (e, st) {// if something went wrong then show the log
       print(e.message);
       print(st);
 
       // if something went wrong then show the snack-bar
-      AppHelperFunctions.showSnackBar(e.message);
+      AppHelperFunctions.showSimpleSnackBar(e.message);
     } catch (e, st) {
       // if something went wrong then show the log
       print(e);
       print(st);
 
       // if something went wrong then show the snack-bar
-      AppHelperFunctions.showSnackBar("Something went wrong");
+      AppHelperFunctions.showSimpleSnackBar("Something went wrong");
     }
     FullScreenLoader.stopLoading();
     return;
@@ -129,17 +130,19 @@ class PaymentController extends GetxController{
   Future<void> paymentCheckoutWithStripe () async{
     FullScreenLoader.openLoadingDialog('Processing', AppImages.searching);
     await stripePaymentRepo.initPaymentSheet();
-    FullScreenLoader.stopLoading();
 
     try{
+      FullScreenLoader.stopLoading();
       await Stripe.instance.presentPaymentSheet();
-      ScaffoldMessenger.of(Get.overlayContext!).showSnackBar(
-        const SnackBar(content: Text('Successfully paid')),
-      );
+      AppHelperFunctions.showSnackBarWithDesign(title: 'Successfully paid', backgroundColor: AppColors.primary);
+      // ScaffoldMessenger.of(Get.overlayContext!).showSnackBar(
+      //   const SnackBar(content: Text('Successfully paid')),
+      // );
     }catch(e){
-      ScaffoldMessenger.of(Get.overlayContext!).showSnackBar(
-        const SnackBar(content: Text('Payment Failed')),
-      );
+      AppHelperFunctions.showSnackBarWithDesign(title: 'Payment Failed', backgroundColor: AppColors.primary);
+      // ScaffoldMessenger.of(Get.overlayContext!).showSnackBar(
+      //   const SnackBar(content: Text('Payment Failed')),
+      // );
     }
   }
 }

@@ -30,7 +30,7 @@ class AppLoaders {
   }
 
   static successSnackBar({required title, message = '', duration = 3}) {
-    AppHelperFunctions.getSnackBar(
+    AppHelperFunctions.showSnackBarWithDesign(
         title: title,
         message: message,
         duration: duration,
@@ -39,7 +39,7 @@ class AppLoaders {
   }
 
   static warningSnackBar({required title, message = '', duration = 3}) {
-    AppHelperFunctions.getSnackBar(
+    AppHelperFunctions.showSnackBarWithDesign(
         title: title,
         message: message,
         duration: duration,
@@ -48,7 +48,7 @@ class AppLoaders {
   }
 
   static errorSnackBar({required title, message = '', duration = 3}) {
-    AppHelperFunctions.getSnackBar(
+    AppHelperFunctions.showSnackBarWithDesign(
         title: title,
         message: message,
         duration: duration,

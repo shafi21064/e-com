@@ -78,9 +78,9 @@ class LogInPageController extends GetxController {
           accessToken: googleAuth?.accessToken);
 
       if (loginResponse.result == false) {
-       AppHelperFunctions.showSnackBar('${loginResponse.message}');
+       AppHelperFunctions.showSimpleSnackBar('${loginResponse.message}');
       } else {
-        AppHelperFunctions.showSnackBar('${loginResponse.message}');
+        AppHelperFunctions.showSimpleSnackBar('${loginResponse.message}');
          AppLocalStorage().saveDataIfNull(LocalStorageKeys.isGoogleLogIn, true);
 
         //AuthHelper().setUserData(loginResponse);
@@ -89,7 +89,7 @@ class LogInPageController extends GetxController {
       GoogleSignIn().disconnect();
 
     } on Exception catch (e) {
-      AppHelperFunctions.showSnackBar(e.toString());
+      AppHelperFunctions.showSimpleSnackBar(e.toString());
       print("error is ....... $e");
       // TODO
     }

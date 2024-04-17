@@ -67,13 +67,13 @@ class AppHelperFunctions {
   }
 
 
-  static void showSnackBar(String message) {
+  static void showSimpleSnackBar(String message) {
     ScaffoldMessenger.of(Get.context!).showSnackBar(SnackBar(
       content: Text(message),
     ));
   }
 
-  static void getSnackBar({required title, message = '', duration = 3, backgroundColor, icon}){
+  static void showSnackBarWithDesign({required title, message = '', duration = 3, backgroundColor, icon}){
     Get.snackbar(
         title,
         message,
