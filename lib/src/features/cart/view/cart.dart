@@ -8,7 +8,6 @@ import '../../../common/layouts/layout_with_drawer/layout_with_drawer.dart';
 import '../../../common/widgets/buttons/app_buttons.dart';
 import '../../../utils/constants/sizes.dart';
 import '../../pdf_viewer/view/pdf_screen.dart';
-import '../../video_player/view/video_player.dart';
 import '../../web_view/web_view.dart';
 import '../controllers/cart_controller.dart';
 
@@ -45,7 +44,7 @@ class Cart extends StatelessWidget {
             const Gap(AppSizes.spaceBtwItems),
             AppButtons.largeFlatFilledButton(
                 onPressed: () {
-                  Get.to(() => const VideoApp());
+                  // Get.to(() => const VideoApp());
                 },
                 buttonText: 'Show video'),
             const Gap(AppSizes.spaceBtwItems),
